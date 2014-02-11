@@ -1,6 +1,6 @@
 function Controller() {
     function openPhoneNumberWin() {
-        var phoneNumberWin = Alloy.createController("userMainDetailsWin").getView();
+        var phoneNumberWin = Alloy.createController("phoneNumberWin").getView();
         Alloy.Globals.mainNav.openWindow(phoneNumberWin);
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -13,50 +13,76 @@ function Controller() {
     var __defers = {};
     $.__views.win = Ti.UI.createWindow({
         backgroundColor: "white",
-        id: "win",
-        title: "Welcome to Bofff Me !"
+        exitOnClose: true,
+        backgroundGradient: {
+            type: "linear",
+            startPoint: {
+                x: "50%",
+                y: "0%"
+            },
+            endPoint: {
+                x: "50%",
+                y: "100%"
+            },
+            colors: [ {
+                color: "#58c8f3",
+                offset: 0
+            }, {
+                color: "#41bae8",
+                offset: .4
+            }, {
+                color: "#2585b7",
+                offset: .9
+            } ]
+        },
+        id: "win"
     });
     $.__views.win && $.addTopLevelView($.__views.win);
-    $.__views.viewandroid = Ti.UI.createView({
-        id: "viewandroid"
+    $.__views.__alloyId205 = Ti.UI.createView({
+        id: "__alloyId205"
     });
-    $.__views.win.add($.__views.viewandroid);
-    $.__views.textLbl = Ti.UI.createLabel({
+    $.__views.win.add($.__views.__alloyId205);
+    $.__views.__alloyId206 = Ti.UI.createLabel({
+        left: 10,
+        top: "5%",
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
-        color: "#000",
-        font: {
-            fontSize: "14dp",
-            fontWeight: "bold"
-        },
-        top: "30%",
-        textAlign: "center",
-        left: 20,
-        right: 20,
-        text: "We help you keep in touch and always sure that your contacts are always upto data, you're gonna be a great BOFFFER !",
-        id: "textLbl"
-    });
-    $.__views.viewandroid.add($.__views.textLbl);
-    $.__views.continueBtn = Ti.UI.createButton({
-        top: "90%",
         color: "white",
-        backgroundColor: "#2279bc",
-        borderRadius: 5,
         font: {
-            fontSize: "18dp",
+            fontSize: "18"
+        },
+        text: "WELCOME TO BOFFF ME!",
+        id: "__alloyId206"
+    });
+    $.__views.__alloyId205.add($.__views.__alloyId206);
+    $.__views.__alloyId207 = Ti.UI.createImageView({
+        image: "/images/bofffme_logo_512x512.png",
+        width: "200",
+        height: "200",
+        top: "25%",
+        id: "__alloyId207"
+    });
+    $.__views.__alloyId205.add($.__views.__alloyId207);
+    $.__views.__alloyId208 = Ti.UI.createButton({
+        bottom: 0,
+        font: {
+            fontSize: "22",
             fontWeight: "bold"
         },
-        height: "40dp",
-        width: "80%",
+        height: "10%",
+        width: "100%",
+        backgroundColor: "transparent",
+        color: "white",
         title: "Continue",
-        id: "continueBtn"
+        id: "__alloyId208"
     });
-    $.__views.viewandroid.add($.__views.continueBtn);
-    openPhoneNumberWin ? $.__views.continueBtn.addEventListener("click", openPhoneNumberWin) : __defers["$.__views.continueBtn!click!openPhoneNumberWin"] = true;
+    $.__views.__alloyId205.add($.__views.__alloyId208);
+    openPhoneNumberWin ? $.__views.__alloyId208.addEventListener("click", openPhoneNumberWin) : __defers["$.__views.__alloyId208!click!openPhoneNumberWin"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
-    $.container.open();
-    __defers["$.__views.continueBtn!click!openPhoneNumberWin"] && $.__views.continueBtn.addEventListener("click", openPhoneNumberWin);
+    $.win.navBarHidden = true;
+    $.win.open();
+    __defers["$.__views.__alloyId208!click!openPhoneNumberWin"] && $.__views.__alloyId208.addEventListener("click", openPhoneNumberWin);
     _.extend($, exports);
 }
 

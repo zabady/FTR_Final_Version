@@ -11,7 +11,7 @@ function Controller() {
     var welcomeWin = Alloy.createController("welcomeWin").getView();
     Alloy.Globals.mainNav = Titanium.UI.iOS.createNavigationWindow({
         window: welcomeWin,
-        backgroundColor: "#ade3f8"
+        backgroundColor: "#2279bc"
     });
     Alloy.Globals.mainNav.open();
     _.extend($, exports);

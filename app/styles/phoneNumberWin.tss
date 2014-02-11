@@ -2,6 +2,9 @@
 "View": {
 	height: Ti.UI.SIZE,
 },
+"ScrollView": {
+	height: Ti.UI.FILL,
+},
 "Label": {
 	font: {fontSize: "14dp", fontWeight: "bold"},
 	color: 'black'
@@ -12,7 +15,7 @@
 	// TODO: Handle softKeyboardOnFocus for android
 },
 "Button": {
-	top: "90%",
+	//top: "90%",
 	color: "white",
 	backgroundColor: "#2279bc",
 	borderRadius: 5,
@@ -20,6 +23,7 @@
 	height: "45dp",
 	width: "80%"
 }
+
 
 /////////////////////////////////////////////////////// Class Styles
 	".allStyles": {
@@ -33,29 +37,29 @@
 	}
 
 /////////////////////////////////////////////////////// Specific Styles
-	"#view_1": {
-		top: "10%"
-	},
-	"#lbl_typeYourPhone": {
-		top: '15%'
-	},
-	"#view_2": {
-		top: "2%"
-	},
-	"#lbl_countryCode": {
-		top:7,
-		font: {fontSize: "18dp"},
-		textAlign: 'right',
-		width: '13%',
-		height: 'auto'
-	},
-	"#txt_phoneNumber": {
-		left: '1%',
-		width: '61%',
-		top: 0
-	}
-	
-
-"#lbl_alreadyRegistered": {
-	top: "85%",
-}
+	// "#view_1": {
+		// top: "10%"
+	// },
+	// "#lbl_typeYourPhone": {
+		// top: '15%'
+	// },
+	// "#view_2": {
+		// top: "2%"
+	// },
+	// "#lbl_countryCode": {
+		// top:7,
+		// font: {fontSize: "18dp"},
+		// textAlign: 'right',
+		// width: '13%',
+		// height: 'auto'
+	// },
+	// "#txt_phoneNumber": {
+		// left: '1%',
+		// width: '61%',
+		// top: 0
+	// }
+// 	
+// 
+// "#lbl_alreadyRegistered": {
+	// top: "85%",
+// }

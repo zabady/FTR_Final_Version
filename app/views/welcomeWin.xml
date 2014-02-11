@@ -1,12 +1,11 @@
 <Alloy>
-	<Window class="container" id="container" title="Welcome to Bofff Me !">
-		
-		<View class="container" id="viewandroid">
-			<Label class="label" id="textLbl">
-				We help you keep in touch and always sure that your contacts are always upto data, you're gonna be a great BOFFFER !
-			</Label>
-			<Button class="button" id="continueBtn" onClick="openPhoneNumberWin">Continue</Button>
+	<Window id="win">
+		<View>
+
+			<Label>WELCOME TO BOFFF ME!</Label>
+			<ImageView />
+			<Button onClick="openPhoneNumberWin">Continue</Button>
+
 		</View>
-		
 	</Window>
 </Alloy>

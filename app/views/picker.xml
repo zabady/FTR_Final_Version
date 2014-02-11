@@ -13,6 +13,6 @@
 		
   	</View>
   	
-  	<Picker platform="android" id="picker" selectionIndicator="true" backgroundColor="white" />
+  	<Picker platform="android" id="picker" selectionIndicator="true" />
   	
 </Alloy>

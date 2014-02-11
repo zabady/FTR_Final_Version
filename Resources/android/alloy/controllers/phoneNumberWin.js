@@ -46,11 +46,11 @@ function Controller() {
         title: "Your Phone Number"
     });
     $.__views.win && $.addTopLevelView($.__views.win);
-    $.__views.view_1 = Ti.UI.createView({
-        height: Ti.UI.SIZE,
-        top: "10%",
+    $.__views.view_1 = Ti.UI.createScrollView({
+        height: Ti.UI.FILL,
         id: "view_1",
-        layout: "vertical"
+        layout: "vertical",
+        scrollingEnabled: "false"
     });
     $.__views.win.add($.__views.view_1);
     $.__views.__alloyId172 = Ti.UI.createLabel({
@@ -81,7 +81,7 @@ function Controller() {
             fontWeight: "bold"
         },
         color: "black",
-        top: "15%",
+        top: "2%",
         left: 20,
         width: "75%",
         height: Ti.UI.SIZE,
@@ -93,7 +93,6 @@ function Controller() {
     $.__views.view_1.add($.__views.lbl_typeYourPhone);
     $.__views.view_2 = Ti.UI.createView({
         height: Ti.UI.SIZE,
-        top: "2%",
         id: "view_2",
         layout: "horizontal",
         horizontalWrap: "true"
@@ -101,16 +100,16 @@ function Controller() {
     $.__views.view_1.add($.__views.view_2);
     $.__views.lbl_countryCode = Ti.UI.createLabel({
         font: {
-            fontSize: "18dp"
+            fontSize: "14dp",
+            fontWeight: "bold"
         },
         color: "black",
-        top: 7,
+        top: "2%",
         left: 20,
-        width: "13%",
-        height: "auto",
+        width: "75%",
+        height: Ti.UI.SIZE,
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         keyboardType: Ti.UI.KEYBOARD_PHONE_PAD,
-        textAlign: "right",
         text: "+966",
         id: "lbl_countryCode"
     });
@@ -119,9 +118,9 @@ function Controller() {
         font: {
             fontSize: "14dp"
         },
-        top: 0,
-        left: "1%",
-        width: "61%",
+        top: "2%",
+        left: 20,
+        width: "75%",
         height: Ti.UI.SIZE,
         color: "black",
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -153,28 +152,30 @@ function Controller() {
             fontWeight: "bold"
         },
         color: "black",
-        top: "85%",
         text: "Already Registered ?",
         id: "lbl_alreadyRegistered",
         url: "http://www.google.com"
     });
-    $.__views.win.add($.__views.lbl_alreadyRegistered);
+    $.__views.view_1.add($.__views.lbl_alreadyRegistered);
     openWebView ? $.__views.lbl_alreadyRegistered.addEventListener("click", openWebView) : __defers["$.__views.lbl_alreadyRegistered!click!openWebView"] = true;
     $.__views.__alloyId174 = Ti.UI.createButton({
-        top: "90%",
-        color: "white",
+        color: "black",
         backgroundColor: "#2279bc",
         borderRadius: 5,
         font: {
             fontSize: "15dp",
             fontWeight: "bold"
         },
-        height: "45dp",
-        width: "80%",
+        height: Ti.UI.SIZE,
+        width: "75%",
+        top: "2%",
+        left: 20,
+        borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+        keyboardType: Ti.UI.KEYBOARD_PHONE_PAD,
         title: "Continue",
         id: "__alloyId174"
     });
-    $.__views.win.add($.__views.__alloyId174);
+    $.__views.view_1.add($.__views.__alloyId174);
     continueBtnPressed ? $.__views.__alloyId174.addEventListener("click", continueBtnPressed) : __defers["$.__views.__alloyId174!click!continueBtnPressed"] = true;
     var __alloyId176 = [];
     __alloyId176.push("Edit");
@@ -209,7 +210,9 @@ function Controller() {
     $.addClass($.picker.picker, "androidPicker");
     $.picker.picker.addEventListener("change", changeCountryAndCountryCode);
     $.win.addEventListener("androidback", function() {
-        $.win.close();
+        $.win.close({
+            activityExitAnimation: Ti.Android.R.anim.slide_out_right
+        });
     });
     __defers["$.__views.txt_country_ios!focus!openOrClosePicker"] && $.__views.txt_country_ios.addEventListener("focus", openOrClosePicker);
     __defers["$.__views.__alloyId173!click!openWebView"] && $.__views.__alloyId173.addEventListener("click", openWebView);

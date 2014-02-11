@@ -8,8 +8,7 @@ function Controller() {
     var exports = {};
     $.__views.picker = Ti.UI.createPicker({
         id: "picker",
-        selectionIndicator: "true",
-        backgroundColor: "white"
+        selectionIndicator: "true"
     });
     $.__views.picker && $.addTopLevelView($.__views.picker);
     exports.destroy = function() {};

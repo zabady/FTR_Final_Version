@@ -2,14 +2,14 @@
 // TODO: Find a better solution
 // A poor solution is ScrollView, it's very bad on android, and also bad on iOS of fullscreen mode
 // TODO: Try this code on iphone 4s
-if(OS_IOS) {
-	$.txt_phoneNumber.addEventListener('focus', function(){
-		$.win.animate({bottom: '30%', duration:500});
-	});
-	$.txt_phoneNumber.addEventListener('blur', function() { 
-		$.win.animate({bottom: 0, duration:500});
-	});
-}
+// if(OS_IOS) {
+	// $.txt_phoneNumber.addEventListener('focus', function(){
+		// $.win.animate({bottom: '30%', duration:500});
+	// });
+	// $.txt_phoneNumber.addEventListener('blur', function() { 
+		// $.win.animate({bottom: 0, duration:500});
+	// });
+// }
 
 
 ////////////////////////////////////////////////////////////////////////////////////////// PICKER AND TEXTFIELDS
@@ -164,7 +164,8 @@ function dialogConfirmPressed(e){
 
 
 // Overriding back button in android to close the window not the app
-$.win.addEventListener('androidback', function (e) 
-{
-    $.win.close();
+$.win.addEventListener('androidback', function (e) {
+    $.win.close({
+    	activityExitAnimation: Ti.Android.R.anim.slide_out_right,
+    });
 });

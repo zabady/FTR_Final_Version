@@ -1,6 +1,7 @@
 <Alloy>
-	<Window class="container" id="win" title="Your Phone Number">
-		<View id="view_1" layout="vertical">
+	<Window id="win" title="Your Phone Number">
+		
+		<ScrollView id="view_1" layout="vertical" scrollingEnabled="false" >
 		
 			<Label class="allStyles">Choose Your Country</Label>
 			<TextField platform="ios" class="allStyles" id="txt_country_ios" onFocus="openOrClosePicker"></TextField>
@@ -13,12 +14,12 @@
 			</View>
 			
 			<Label class="allStyles" url="http://www.facebook.com" onClick="openWebView">Why my phone number ?</Label>
-			
-		</View>
 		
-		<Label id="lbl_alreadyRegistered" url="http://www.google.com" onClick="openWebView">Already Registered ?</Label>
+			<Label id="lbl_alreadyRegistered" url="http://www.google.com" onClick="openWebView">Already Registered ?</Label>
 		
-		<Button onClick="continueBtnPressed">Continue</Button>
+			<Button class="allStyles" onClick="continueBtnPressed">Continue</Button>
+		
+		</ScrollView>
 		
 		<Require platform="ios" id="picker" src="picker" type="view" top=10></Require>
 		

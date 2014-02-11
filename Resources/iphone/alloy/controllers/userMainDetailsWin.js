@@ -233,7 +233,9 @@ function Controller() {
         $.txt_email.blur();
     });
     $.win.addEventListener("androidback", function() {
-        $.win.close();
+        $.win.close({
+            activityExitAnimation: Ti.Android.R.anim.slide_out_right
+        });
     });
     __defers["$.__views.btn_facebook!click!facebookBtnPressed"] && $.__views.btn_facebook.addEventListener("click", facebookBtnPressed);
     __defers["$.__views.img_user!click!imgPressed"] && $.__views.img_user.addEventListener("click", imgPressed);
