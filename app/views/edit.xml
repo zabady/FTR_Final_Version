@@ -1,0 +1,100 @@
+<Alloy>
+	<Window id="win" title="Complete Your Profile">
+	
+		<View platform="android" height="10%" top="0" backgroundColor="brown">
+			<Button title="Edit" left="10"></Button>
+			<Label id="lbl_completeProfile">Complete Your Profile</Label>
+			<Button title="Skip" right="10"></Button>
+		</View>
+		
+		<TableView id="table" backgroundColor="transparent" onClick="saveClickedRow" >
+			
+			<!-- Name, company and picture Section -->
+			<TableViewRow height="150">
+				<View class="imageAndNameViews" left="0">
+					<ImageView id="img_user" />
+					<!-- Privacy Picker for ios and android -->
+					<Label platform="ios" onClick="openPicker" bubbleParent="false" width="80" textAlign="center" top="2">Privacy</Label>
+					<Require platform="android" id="picker_img" src="privacyPicker" type="view" />
+				</View>
+				<View class="imageAndNameViews" right="0">
+					<TextField class="nameAndJobTextFields" hintText="First Name" />
+					<TextField class="nameAndJobTextFields" hintText="Last Name" />
+					<TextField class="nameAndJobTextFields" hintText="Job Title" />
+				</View>
+			</TableViewRow>
+			
+			
+			<!-- Phone Section 				-- ADD -- -->
+			<TableViewRow>
+				<Label class="sectionDescriptionLabels">Phone</Label>
+				<Button platform="ios" class="addButtonIOS" onClick="addButtonPressed" />
+				<ImageView platform="android" class="addImageAndroid" onClick="addButtonPressed" />
+			</TableViewRow>
+			<!-- Phone Fields 			-- Primary -- -->
+			<TableViewRow>
+				<Label class="fieldsDescriptionLables" text="Primary" />
+				<Label class="numberFieldsTextFields" id="lbl_primaryPhone" textAlign="center" type="phone" />
+				<!-- Privacy Picker for ios and android -->
+				<Label platform="ios" class="fieldsPrivacylabels" text="Privacy" onClick="openPicker"/>
+				<Require platform="android" id="picker" src="privacyPicker" type="view" />
+			</TableViewRow>
+			
+			
+			<!-- Email Section 				-- ADD -- -->
+			<TableViewRow>
+				<Label class="sectionDescriptionLabels">Email</Label>
+				<Button platform="ios" class="addButtonIOS" onClick="addButtonPressed" />
+				<ImageView platform="android" class="addImageAndroid" onClick="addButtonPressed" />
+			</TableViewRow>
+			<!-- Email Fields 			-- Primary -- -->
+			<TableViewRow>
+				<Label class="fieldsDescriptionLables" text="Primary" />
+				<TextField class="emailFieldsTextFields" id="txt_primaryEmail" type="email" />
+				<!-- Privacy Picker for ios and android -->
+				<Label platform="ios" class="fieldsPrivacylabels" text="Privacy" onClick="openPicker" />
+				<Require platform="android" id="picker" src="privacyPicker" type="view" />
+			</TableViewRow>
+			<!-- Email Fields 			-- Apple ID -- Editable -- -->
+			<TableViewRow editable="true">
+				<Label class="fieldsDescriptionLables" text="Apple ID" />
+				<TextField class="emailFieldsTextFields" hintText="Apple ID email" />
+				<!-- Privacy Picker for ios and android -->
+				<Label platform="ios" class="fieldsPrivacylabels" text="Privacy" onClick="openPicker" />
+				<Require platform="android" id="picker" src="privacyPicker" type="view" />
+			</TableViewRow>
+			
+			
+			<!-- BBM Pin Section 			-- NO-ADD --  -->
+			<TableViewRow>
+				<Label class="sectionDescriptionLabels">BBM Pin</Label>
+				<TextField class="fieldsTextFields" hintText="Your Pin" />
+				<!-- Privacy Picker for ios and android -->
+				<Label platform="ios" class="fieldsPrivacylabels" text="Privacy" onClick="openPicker" />
+				<Require platform="android" id="picker" src="privacyPicker" type="view" />
+			</TableViewRow>
+			
+			
+			<!-- Interests Section 			-- ADD --  -->
+			<TableViewRow>
+				<Label class="sectionDescriptionLabels">Interests</Label>
+				<Button platform="ios" class="addButtonIOS" onClick="addButtonPressed" />
+				<ImageView platform="android" class="addImageAndroid" onClick="addButtonPressed" />
+			</TableViewRow>
+			<!-- Interests Fields -->
+			<TableViewRow>
+				<TextField class="fieldsTextFieldsNoDescription" hintText="Watching Premier Leauge"></TextField>
+				<!-- Privacy Picker for ios and android -->
+				<Label platform="ios" class="fieldsPrivacylabels" text="Privacy" onClick="openPicker" />
+				<Require platform="android" id="picker" src="privacyPicker" type="view" />
+			</TableViewRow>
+			
+			
+        </TableView>
+        
+        <Button class="continueButton">Continue</Button>
+        
+        <Require platform="ios" id="pickerView" src="privacyPicker" type="view" />
+        
+	</Window>
+</Alloy>

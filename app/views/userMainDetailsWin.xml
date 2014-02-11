@@ -1,0 +1,35 @@
+<Alloy>
+	<Window class="container" id="win" title="Enter Your Details">
+		
+<!-- TODO: The scrollView has problems in screen rotation because of using dp pixels instead of screen % -->
+<!-- TODO: Disscussion Point: Will we support Screen Rotation ? -->
+		<ScrollView layout="vertical" scrollingEnabled="false" >
+			
+			<Label class="allStyles" platform="android">Enter Your Details</Label>
+			
+			<Button id="btn_facebook" onClick="facebookBtnPressed"></Button>
+			
+			<Label class="allStyles">OR</Label>
+			
+			<ImageView id="img_user" onClick="imgPressed" />
+		
+			<TextField id="txt_name" class="allStyles" onReturn="txtNameReturnKeyPressed"></TextField>
+			
+			<TextField id="txt_email" class="allStyles" onReturn="continueBtnPressed"></TextField>
+			<Label id="lbl_whyMyEmail" url="http://yahoo.com" onClick="openWebView">Why my email ?</Label>
+			
+			
+			<Button onClick="continueBtnPressed">Continue</Button>
+		
+		</ScrollView>
+		
+		<OptionDialog id="optionDialog" cancel="2" onClick="optionDialogClick">
+			<Options>
+				<Option>Open Camera</Option>
+				<Option>Choose from Library</Option>
+				<Option>Cancel</Option>
+			</Options>
+		</OptionDialog>
+		
+	</Window>
+</Alloy>

@@ -1,0 +1,64 @@
+/////////////////////////////////////////////////////// Objects common styles
+"ScrollView": {
+	height: Ti.UI.SIZE,
+	top: "10dp"
+},
+"Button": {
+	top: "10dp",
+	borderRadius: 5,
+	font: {fontSize: "15dp", fontWeight: "bold"},
+	height: "40dp",
+	width: "55%",
+	backgroundColor: "#2279bc", // Dark Blue
+	color: "white",
+	bubbleParent: false
+},
+"Label": {
+	font: {fontSize: "17dp"},
+	color: "#2279bc", // Dark blue
+},
+"TextField": {
+	bubbleParent: false, // To disable bubbling events to paretns
+}
+"TextField[platform=android]": {
+	softKeyboardOnFocus: Ti.UI.Android.SOFT_KEYBOARD_DEFAULT_ON_FOCUS, // Android only to view keyboard onFocus
+}
+
+
+/////////////////////////////////////////////////////// Class Styles
+	".allStyles": {
+		width: "75%",
+		top: "8dp",
+		height: Ti.UI.SIZE,
+		textAlign: "center",
+		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, // For text fields
+	}
+
+
+/////////////////////////////////////////////////////// Specific Styles
+	"#btn_facebook": {
+		top: "20dp",
+		bottom: "12dp",
+		height: "40dp",
+		width: "200dp",
+		backgroundImage: "/images/import_facebook_300x62.png",
+	},
+	"#img_user": {
+		top: "12dp",
+		height :"100dp",
+		width : "100dp",
+	    image :  "/images/contact_photo.png",
+	},
+	"#txt_name": {
+		hintText: "Your Name",
+		returnKeyType: Ti.UI.RETURNKEY_NEXT,
+	},
+	"#txt_email": {
+		hintText: "Your email",
+		keyboardType: Ti.UI.KEYBOARD_EMAIL,
+		returnKeyType: Ti.UI.RETURNKEY_GO,
+	},
+	"#lbl_whyMyEmail": {
+		font: { fontSize: "14dp" },
+		bottom: "10dp",
+	}

@@ -1,0 +1,98 @@
+/////////////////////////////////////////////////////// Objects common styles
+"TableView": {
+	height: "90%",
+	top: 0,
+	backgroundColor: "white",
+	separatorColor: "transparent",
+},
+"TableViewRow": {
+	//selectedBackgroundColor: 'white',
+	//selectionStyle: Titanium.UI.iPhone.TableViewCellSelectionStyle.NONE,
+}
+
+
+/////////////////////////////////////////////////////// Class Styles
+".titleLabel": {
+	font: { fontSize: "25" },
+	color: "#2279bc", // Dark Blue
+	height: "50",
+}
+
+
+".nameCompanyTextFields": {
+	
+},
+".sectionDescriptionLabels": {
+	left: "20",
+	font: {fontSize: "14"},						// FONT
+	color: "#2279bc", // Dark Blue
+},
+".addButtonIOS[platform=ios]": {
+	style: Ti.UI.iPhone.SystemButton.CONTACT_ADD,
+	right: "10",
+},
+".addImageAndroid[platform=android]": {
+	image: "/images/plus_icon_android.png",
+	width: "22",
+	height: "22",
+	right: "10",
+}
+
+
+".fieldsTableViewRows": {
+	height: "40",
+},
+".fieldsDescriptionLables": {
+	font: { fontSize: "14" },						// FONT
+	color: "black",
+	borderColor: "#2279bc", // Dark Blue,
+	borderRadius: "4",
+	width: "30%",
+	height: "30",									// Height of fields
+	left: "5%",
+	top: "1",
+},
+".fieldsTextFields": {
+	font: { fontSize: "14" },						// FONT
+	textAlign: "center",
+	color: "black",
+	borderColor: "#2279bc", // Dark Blue,
+	borderRadius: "4",
+	width: "50%",
+	height: "30",									// Height of fields
+	left: "37%",
+	top: "1",
+},
+".removeImage": {
+	image: "/images/remove_icon.png",
+	width: "22",
+	height: "22",
+	right: "10",
+}
+
+
+".continueButton": {
+	font: {fontSize: "20", fontWeight: "bold"},
+	height: "10%",
+	width: "100%",
+	backgroundColor: "#2279bc", // Dark Blue
+	color: "white",
+	bottom: 0,
+}
+
+
+/////////////////////////////////////////////////////// Specific Styles
+"#img_user": {
+	left: "30",
+	top: "20",
+	bottom: "20",
+	image: "/images/contact_photo.png",
+	width: "100",
+	heigth: "100",
+},
+"#lbl_primaryPhone": {
+	text: Alloy.Globals.globalUserSignUpData.phone,
+},
+"#txt_primaryEmail": {
+	value: Alloy.Globals.globalUserSignUpData.email,
+}

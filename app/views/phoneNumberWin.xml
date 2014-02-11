@@ -1,0 +1,33 @@
+<Alloy>
+	<Window class="container" id="win" title="Your Phone Number">
+		<View id="view_1" layout="vertical">
+		
+			<Label class="allStyles">Choose Your Country</Label>
+			<TextField platform="ios" class="allStyles" id="txt_country_ios" onFocus="openOrClosePicker"></TextField>
+			<Require platform="android" id="picker" src="picker" type="view" top=10></Require>
+			
+			<Label class="allStyles" id="lbl_typeYourPhone">Type your phone number</Label>
+			<View id="view_2" layout="horizontal" horizontalWrap=true>
+				<Label class="allStyles" id="lbl_countryCode">+966</Label>
+				<TextField class="allStyles" id="txt_phoneNumber"/>
+			</View>
+			
+			<Label class="allStyles" url="http://www.facebook.com" onClick="openWebView">Why my phone number ?</Label>
+			
+		</View>
+		
+		<Label id="lbl_alreadyRegistered" url="http://www.google.com" onClick="openWebView">Already Registered ?</Label>
+		
+		<Button onClick="continueBtnPressed">Continue</Button>
+		
+		<Require platform="ios" id="picker" src="picker" type="view" top=10></Require>
+		
+		<AlertDialog id="dialog_confirm" onClick="dialogConfirmPressed" title="Confirm your number">
+            <ButtonNames>
+                <ButtonName>Edit</ButtonName>
+                <ButtonName>Confirm</ButtonName>
+            </ButtonNames>
+        </AlertDialog>
+		
+	</Window>
+</Alloy>

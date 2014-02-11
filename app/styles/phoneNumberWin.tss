@@ -1,0 +1,61 @@
+/////////////////////////////////////////////////////// Objects common styles
+"View": {
+	height: Ti.UI.SIZE,
+},
+"Label": {
+	font: {fontSize: "14dp", fontWeight: "bold"},
+	color: 'black'
+},
+"TextField": {
+	font: {fontSize: "14dp"},
+	//softKeyboardOnFocus: Ti.UI.Android.SOFT_KEYBOARD_DEFAULT_ON_FOCUS, // Android only to view keyboard onFocus
+	// TODO: Handle softKeyboardOnFocus for android
+},
+"Button": {
+	top: "90%",
+	color: "white",
+	backgroundColor: "#2279bc",
+	borderRadius: 5,
+	font: {fontSize: "15dp", fontWeight: "bold"},
+	height: "45dp",
+	width: "80%"
+}
+
+/////////////////////////////////////////////////////// Class Styles
+	".allStyles": {
+		top: "2%",
+		left: 20,
+		width: "75%",
+		height: Ti.UI.SIZE,
+		color: "black",
+		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+		keyboardType : Ti.UI.KEYBOARD_PHONE_PAD,
+	}
+
+/////////////////////////////////////////////////////// Specific Styles
+	"#view_1": {
+		top: "10%"
+	},
+	"#lbl_typeYourPhone": {
+		top: '15%'
+	},
+	"#view_2": {
+		top: "2%"
+	},
+	"#lbl_countryCode": {
+		top:7,
+		font: {fontSize: "18dp"},
+		textAlign: 'right',
+		width: '13%',
+		height: 'auto'
+	},
+	"#txt_phoneNumber": {
+		left: '1%',
+		width: '61%',
+		top: 0
+	}
+	
+
+"#lbl_alreadyRegistered": {
+	top: "85%",
+}

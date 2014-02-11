@@ -1,0 +1,24 @@
+<Alloy>
+	<Picker platform="ios" id="picker" useSpinner="false" selectionIndicator="true" bubbleParent="false" visible="false" bottom="10%">
+		<PickerRow title="Public"></PickerRow>
+		<PickerRow title="Friends"></PickerRow>
+		<PickerRow title="Favorites"></PickerRow>
+		<PickerRow title="Only Me"></PickerRow>
+	</Picker>
+	
+	<Picker platform="android" id="picker" useSpinner="false" selectionIndicator="true" width="95" height="38" right="2%">
+		<PickerRow title="Public"></PickerRow>
+		<PickerRow title="Friends"></PickerRow>
+		<PickerRow title="Favorites"></PickerRow>
+		<PickerRow title="Only Me"></PickerRow>
+	</Picker>
+
+	<!-- Table View Picker for android
+	<TableView platform="android" id="picker" height="Ti.UI.SIZE" backgroundColor="white" visible="false" bubbleParent="false">
+		<TableViewRow title="Public"></TableViewRow>
+		<TableViewRow title="Friends"></TableViewRow>
+		<TableViewRow title="Favorites"></TableViewRow>
+		<TableViewRow title="Only Me"></TableViewRow>
+	</TableView>
+	-->
+</Alloy>

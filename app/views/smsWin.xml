@@ -1,0 +1,21 @@
+<Alloy>
+	<Window class="container" id="win" title="SMS Confirmation">
+
+<!-- TODO: Discussion Point: Testing should tell us to use a ScrollView instead of View here ! ScrollView will be used -->
+		<View layout="vertical">
+			
+			<Label class="allStyles" id="lbl_gotYourCode">Got your code ?</Label>
+		
+<!-- TODO: Discussion Point: Should Done Button in android fires Contine Clicked ? -> NO -->
+			<TextField class="allStyles" id="txt_SMSCode" onChange="editingSMSCodeTxt"></TextField>
+			
+			<Button class="allStyles" id="btn_continue" title="Continue" onClick="continueBtnPressed" enabled="false"></Button>
+			
+			<Label class="allStyles">A code was sent to you via SMS.</Label>
+			
+			<Label class="allStyles">It can take up to a minute, thank you for your patience.</Label>
+			
+		</View>
+		
+	</Window>
+</Alloy>

@@ -1,0 +1,126 @@
+<Alloy>
+<!-- TODO: Put labels for android with the window's title text for the previous windows -->
+	<Window id="win" title="Complete Your Profile">
+		
+		<View platform="android" backgroundColor="brown">
+			<Button title="Edit" left="10"></Button>
+			<Label class="titleLabel">Complete Your Profile</Label>
+			<Button title="Skip" right="10"></Button>
+		</View>
+		
+		<TableView onSwipe="fuckMe">
+			<!-- Name, company and picture Section -->
+			<TableViewRow height="160dp">
+				<ImageView id="img_user"></ImageView>
+				<View height="130dp" top="30dp" layout="horizontal" width="50%" left="50%">
+					<TextField hintText="First Name" height="35dp"></TextField>
+					<TextField hintText="Last Name" top="10dp" height="35dp"></TextField>
+					<TextField hintText="Company" top="10dp" height="35dp"></TextField>
+				</View>
+			</TableViewRow>
+			
+			
+			<!-- Phone Section 				-- ADD -- -->
+			<TableViewRow>
+				<Label class="sectionDescriptionLabels">Phone</Label>
+				<Button platform="ios" class="addButtonIOS" />
+				<ImageView platform="android" class="addImageAndroid" />
+			</TableViewRow>
+			<!-- Phone Fields -->
+			<TableViewRow class="fieldsTableViewRows">
+				<Label class="fieldsDescriptionLables" text="  Primary" />
+				<Label class="fieldsTextFields" id="lbl_primaryPhone" />
+			</TableViewRow>
+			
+			
+			<!-- Email Section 				-- ADD --  -->
+			<TableViewRow>
+				<Label class="sectionDescriptionLabels">Email</Label>
+				<Button platform="ios" class="addButtonIOS" />
+				<ImageView platform="android" class="addImageAndroid" />
+			</TableViewRow>
+			<!-- Email Fields -->
+			<TableViewRow class="fieldsTableViewRows">
+				<Label class="fieldsDescriptionLables" text="  Primary" />
+				<TextField class="fieldsTextFields" id="txt_primaryEmail" />
+			</TableViewRow>
+			<TableViewRow class="fieldsTableViewRows">
+				<Label class="fieldsDescriptionLables" text="  Apple ID" />
+				<TextField class="fieldsTextFields" hintText="Apple ID email" />
+				<ImageView class="removeImage" />
+			</TableViewRow>
+			
+			
+			<!-- Job Title Section 			-- NO-ADD --  -->
+			<TableViewRow>
+				<Label class="sectionDescriptionLabels">Job Title</Label>
+				<TextField class="fieldsTextFields" hintText="Your Job" />
+			</TableViewRow>
+			
+			
+			<!-- BBM Pin Section 			-- NO-ADD --  -->
+			<TableViewRow>
+				<Label class="sectionDescriptionLabels">BBM Pin</Label>
+				<TextField class="fieldsTextFields" hintText="Your Pin" />
+			</TableViewRow>
+			
+			
+			<!-- Residence Section 			-- NO-ADD --  -->
+			<TableViewRow>
+				<Label class="sectionDescriptionLabels">Residence</Label>
+				<TextField class="fieldsTextFields" hintText="Could be your city" />
+<!-- TODO: Put a better word than city -->
+			</TableViewRow>
+			
+			
+			<!-- Education Section 			-- NO-ADD --  -->
+			<TableViewRow>
+				<Label class="sectionDescriptionLabels">Education</Label>
+				<TextField class="fieldsTextFields" hintText="High School" />
+			</TableViewRow>
+			
+			
+			<!-- Interests Section 			-- ADD --  -->
+			<TableViewRow>
+				<Label class="sectionDescriptionLabels">Interests</Label>
+				<Button platform="ios" class="addButtonIOS" />
+				<ImageView platform="android" class="addImageAndroid" />
+			</TableViewRow>
+			<!-- Interests Fields -->
+			<TableViewRow class="fieldsTableViewRows">
+				<TextField class="fieldsTextFields" hintText="Watching Premier Leauge" width="90%" left="5%"></TextField>
+			</TableViewRow>
+			
+			
+			<!-- Favorite Places Section 	-- ADD --  -->
+			<TableViewRow>
+				<Label class="sectionDescriptionLabels">Favorite Places</Label>
+				<Button platform="ios" class="addButtonIOS" />
+				<ImageView platform="android" class="addImageAndroid" />
+			</TableViewRow>
+			<!-- Favorite Places Fields -->
+			<TableViewRow class="fieldsTableViewRows">
+				<TextField class="fieldsTextFields" hintText="Spectra Resturant" width="90%" left="5%"></TextField>
+			</TableViewRow>
+			
+			
+			<!-- Custom Field Section 		-- ADD --  -->
+			<TableViewRow>
+				<Label class="sectionDescriptionLabels">Add a Custom Field</Label>
+				<Button platform="ios" class="addButtonIOS" />
+				<ImageView platform="android" class="addImageAndroid" />
+			</TableViewRow>
+			<!-- Custom Field Fields -->
+			<TableViewRow class="fieldsTableViewRows">
+				<TextField class="fieldsDescriptionLables" hintText=" Field Name"></TextField>
+				<TextField class="fieldsTextFields" hintText="Field Text or Value"></TextField>
+			</TableViewRow>
+			
+			
+<!-- TODO: Read Table View Sections Documentation -->
+		</TableView>
+		
+		<Button class="continueButton">Continue</Button>
+		
+	</Window>
+</Alloy>

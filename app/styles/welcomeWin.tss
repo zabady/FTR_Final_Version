@@ -1,0 +1,25 @@
+".label": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color: "#000",
+	font: {fontSize: "20dp", fontWeight: "bold"},
+	top:20,
+} 
+
+".button":{
+	top: "90%",
+	color: "white",
+	backgroundColor: "#2279bc",
+	borderRadius: 5,
+	font: {fontSize: "18dp", fontWeight: "bold"},
+	height: "40dp",
+	width: "80%"
+}
+
+"#textLbl":{
+	top: '30%',
+	font: {fontSize: "14dp", fontWeight: "bold"},
+	textAlign: "center",
+	left: 20,
+	right: 20
+}
