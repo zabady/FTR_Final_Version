@@ -21,4 +21,3 @@ function openPhoneNumberWin(e)
 $.win.navBarHidden = true;
 $.win.open();
 
-// This is for testing commits on github.com
