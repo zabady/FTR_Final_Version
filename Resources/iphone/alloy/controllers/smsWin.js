@@ -78,7 +78,7 @@ function Controller() {
             fontSize: "15dp",
             fontWeight: "bold"
         },
-        width: "55%",
+        width: "50%",
         backgroundColor: "#D8D8D8",
         color: "#C0C0C0",
         bubbleParent: false,
