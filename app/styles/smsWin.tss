@@ -38,7 +38,7 @@
 		borderRadius: 5,
 		font: {fontSize: "15dp", fontWeight: "bold"},
 		height: "40dp",
-		width: "50%",
+		width: "55%",
 		backgroundColor: "#D8D8D8", // Gray
 		color: "#C0C0C0", // Dark Gray
 		bubbleParent: false,

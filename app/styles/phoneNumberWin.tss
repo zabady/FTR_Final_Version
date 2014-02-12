@@ -1,45 +1,65 @@
 /////////////////////////////////////////////////////// Objects common styles
+"View": {
+	height: Ti.UI.SIZE,
+},
 "ScrollView": {
 	height: Ti.UI.FILL,
-	top: 40,
+},
+"Label": {
+	font: {fontSize: "14dp", fontWeight: "bold"},
+	color: 'black'
+},
+"TextField": {
+	font: {fontSize: "14dp"},
+	//softKeyboardOnFocus: Ti.UI.Android.SOFT_KEYBOARD_DEFAULT_ON_FOCUS, // Android only to view keyboard onFocus
+	// TODO: Handle softKeyboardOnFocus for android
 },
 "Button": {
-	top: 20,
+	//top: "90%",
 	color: "white",
 	backgroundColor: "#2279bc",
 	borderRadius: 5,
-	font: { fontSize: "16", fontWeight: "bold" },
-	height: "40",
-	width: "50%"
-},
-"Picker": {
-	 selectionIndicator: true,
-},
-"Picker[platform=ios]": {
-	bottom: 0,
-	bubbleParent: false,
-	visible: false,
-},
-"TextField[platform=android]": {
-	softKeyboardOnFocus: Ti.UI.Android.SOFT_KEYBOARD_SHOW_ON_FOCUS,
+	font: {fontSize: "15dp", fontWeight: "bold"},
+	height: "45dp",
+	width: "80%"
 }
 
 
 /////////////////////////////////////////////////////// Class Styles
-	".descriptionText": {
-		bottom: 40,
-		width: '80%',
-		textAlign: 'center',
-		color: '#2279bc',
-		font: { fontSize: "17" },
-	},
-	".entryFields": {
-		height: '42',
-		bottom: 10,
-		width: "80%",
+	".allStyles": {
+		top: "2%",
+		left: 20,
+		width: "75%",
+		height: Ti.UI.SIZE,
+		color: "black",
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
 		keyboardType : Ti.UI.KEYBOARD_PHONE_PAD,
-		font: { fontSize: "14.5" },
-		color: "black",
-		bubbleParent: false,
 	}
+
+/////////////////////////////////////////////////////// Specific Styles
+	// "#view_1": {
+		// top: "10%"
+	// },
+	// "#lbl_typeYourPhone": {
+		// top: '15%'
+	// },
+	// "#view_2": {
+		// top: "2%"
+	// },
+	// "#lbl_countryCode": {
+		// top:7,
+		// font: {fontSize: "18dp"},
+		// textAlign: 'right',
+		// width: '13%',
+		// height: 'auto'
+	// },
+	// "#txt_phoneNumber": {
+		// left: '1%',
+		// width: '61%',
+		// top: 0
+	// }
+// 	
+// 
+// "#lbl_alreadyRegistered": {
+	// top: "85%",
+// }

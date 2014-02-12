@@ -1,26 +1,27 @@
 <Alloy>
-	<Window id="win" title="Bofff Me Setup">
+	<Window id="win" title="Your Phone Number">
 		
-		<ScrollView scrollingEnabled="false" layout="vertical">
+		<ScrollView id="view_1" layout="vertical" scrollingEnabled="false" >
 		
-			<Label class="descriptionText">
-				Keep your bofff friends in sync with your contact list by registering your phone number.
-			</Label>
+			<Label class="allStyles">Choose Your Country</Label>
+			<TextField platform="ios" class="allStyles" id="txt_country_ios" onFocus="openOrClosePicker"></TextField>
+			<Require platform="android" id="picker" src="picker" type="view" top=10></Require>
 			
-			<Label platform="ios" id="lbl_country_ios" class="entryFields" onClick="openPicker" />
-			<Picker platform="android" id="picker" class="entryFields" onChange="changeCountryAndCountryCode" />
+			<Label class="allStyles" id="lbl_typeYourPhone">Type your phone number</Label>
+			<View id="view_2" layout="horizontal" horizontalWrap=true>
+				<Label class="allStyles" id="lbl_countryCode">+966</Label>
+				<TextField class="allStyles" id="txt_phoneNumber"/>
+			</View>
 			
-			<!--<Require platform="android" id="picker" src="picker" type="view" top=10></Require>-->
-			
-			<TextField class="entryFields" id="txt_phoneNumber" hintText="Phone Number" />
+			<Label class="allStyles" url="http://www.facebook.com" onClick="openWebView">Why my phone number ?</Label>
 		
-			<Button onClick="continueBtnPressed">Continue</Button>
-			
+			<Label id="lbl_alreadyRegistered" url="http://www.google.com" onClick="openWebView">Already Registered ?</Label>
+		
+			<Button class="allStyles" onClick="continueBtnPressed">Continue</Button>
+		
 		</ScrollView>
 		
-		<Picker platform="ios" id="picker" onChange="changeCountryAndCountryCode" />
-		<!--<Require platform="ios" id="picker" src="picker" type="view" top=10></Require>-->
-		
+		<Require platform="ios" id="picker" src="picker" type="view" top=10></Require>
 		
 		<AlertDialog id="dialog_confirm" onClick="dialogConfirmPressed" title="Confirm your number">
             <ButtonNames>

@@ -10,8 +10,7 @@ function Controller() {
         id: "pickerview",
         backgroundColor: "transparent",
         visible: "false",
-        top: "250",
-        bubbleParent: "false"
+        top: "250"
     });
     $.__views.pickerview && $.addTopLevelView($.__views.pickerview);
     var __alloyId181 = [];
