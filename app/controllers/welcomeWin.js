@@ -21,3 +21,4 @@ function openPhoneNumberWin(e)
 $.win.navBarHidden = true;
 $.win.open();
 
+// Why did you remove the test comment :D ? 
