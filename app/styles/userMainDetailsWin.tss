@@ -41,7 +41,7 @@
 		bottom: "12dp",
 		height: "40dp",
 		width: "200dp",
-		backgroundImage: "/images/import_facebook_400x80.png",
+		backgroundImage: "/images/import_facebook_300x62.png",
 	},
 	"#img_user": {
 		top: "12dp",
