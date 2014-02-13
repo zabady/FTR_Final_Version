@@ -10,8 +10,6 @@
 			<Label platform="ios" id="lbl_country_ios" class="entryFields" onClick="openPicker" />
 			<Picker platform="android" id="picker" class="entryFields" onChange="changeCountryAndCountryCode" />
 			
-			<!--<Require platform="android" id="picker" src="picker" type="view" top=10></Require>-->
-			
 			<TextField class="entryFields" id="txt_phoneNumber" hintText="Phone Number" />
 		
 			<Button onClick="continueBtnPressed">Continue</Button>
@@ -19,8 +17,6 @@
 		</ScrollView>
 		
 		<Picker platform="ios" id="picker" onChange="changeCountryAndCountryCode" />
-		<!--<Require platform="ios" id="picker" src="picker" type="view" top=10></Require>-->
-		
 		
 		<AlertDialog id="dialog_confirm" onClick="dialogConfirmPressed" title="Confirm your number">
             <ButtonNames>
