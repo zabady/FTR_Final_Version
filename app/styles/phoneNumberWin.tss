@@ -14,12 +14,13 @@
 },
 "Picker": {
 	 selectionIndicator: true,
+	 top: 1000,
 },
-"Picker[platform=ios]": {
-	bottom: 0,
-	bubbleParent: false,
-	visible: false,
-},
+// "Picker[platform=ios]": {
+	// bottom: 0,
+	// bubbleParent: false,
+	// visible: false,
+//},
 "TextField[platform=android]": {
 	softKeyboardOnFocus: Ti.UI.Android.SOFT_KEYBOARD_SHOW_ON_FOCUS,
 }
