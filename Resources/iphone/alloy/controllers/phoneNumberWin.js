@@ -10,13 +10,13 @@ function Controller() {
     function continueBtnPressed() {
         var phoneNumberRegex = /^[0-9]{9,15}$/;
         if ($.txt_phoneNumber.value.match(phoneNumberRegex)) {
-            $.dialog_confirm.message = "Do do you confirm that this is your number: +" + allCountries[currentCountryCode].phoneCode + $.txt_phoneNumber.value + "\nAn SMS with your access code will be sent to this number.";
+            $.dialog_confirm.message = "Do do you confirm that this is your number: +" + allCountries[currentCountryCode].phoneCode + parseInt($.txt_phoneNumber.value, 10) + "\nAn SMS with your access code will be sent to this number.";
             $.dialog_confirm.show();
         } else alert("The number you entered is not valid");
     }
     function dialogConfirmPressed(e) {
         if (0 == e.index) $.txt_phoneNumber.focus(); else {
-            Alloy.Globals.globalUserSignUpData.phone = allCountries[currentCountryCode].phoneCode + $.txt_phoneNumber.value;
+            Alloy.Globals.globalUserSignUpData.phone = "+" + allCountries[currentCountryCode].phoneCode + parseInt($.txt_phoneNumber.value, 10);
             var smsWin = Alloy.createController("smsWin").getView();
             Alloy.Globals.mainNav.openWindow(smsWin);
         }
@@ -51,12 +51,12 @@ function Controller() {
         font: {
             fontSize: "17"
         },
-        bubbleParent: false,
         text: "Keep your bofff friends in sync with your contact list by registering your phone number.",
         id: "__alloyId173"
     });
     $.__views.__alloyId172.add($.__views.__alloyId173);
     $.__views.lbl_country_ios = Ti.UI.createLabel({
+        height: "42",
         bottom: 10,
         width: "80%",
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -71,6 +71,7 @@ function Controller() {
     $.__views.__alloyId172.add($.__views.lbl_country_ios);
     openPicker ? $.__views.lbl_country_ios.addEventListener("click", openPicker) : __defers["$.__views.lbl_country_ios!click!openPicker"] = true;
     $.__views.txt_phoneNumber = Ti.UI.createTextField({
+        height: "42",
         bottom: 10,
         width: "80%",
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -141,7 +142,6 @@ function Controller() {
     $.win.addEventListener("click", function() {
         animation.fadeOut($.picker, 500);
         $.txt_phoneNumber.blur();
-        alert("I am executed!");
     });
     $.win.addEventListener("androidback", function() {
         $.win.close({
