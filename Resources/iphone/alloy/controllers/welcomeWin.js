@@ -1,6 +1,6 @@
 function Controller() {
     function openPhoneNumberWin() {
-        var phoneNumberWin = Alloy.createController("phoneNumberWin1").getView();
+        var phoneNumberWin = Alloy.createController("phoneNumberWin").getView();
         Alloy.Globals.mainNav.openWindow(phoneNumberWin);
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -38,19 +38,11 @@ function Controller() {
         id: "win"
     });
     $.__views.win && $.addTopLevelView($.__views.win);
-<<<<<<< HEAD
-    $.__views.__alloyId201 = Ti.UI.createView({
-        id: "__alloyId201"
+    $.__views.__alloyId205 = Ti.UI.createView({
+        id: "__alloyId205"
     });
-    $.__views.win.add($.__views.__alloyId201);
-    $.__views.__alloyId202 = Ti.UI.createLabel({
-=======
-    $.__views.__alloyId208 = Ti.UI.createView({
-        id: "__alloyId208"
-    });
-    $.__views.win.add($.__views.__alloyId208);
-    $.__views.__alloyId209 = Ti.UI.createLabel({
->>>>>>> 5daa1a124110b51f9e8352b9a1f44b5650f0c8ac
+    $.__views.win.add($.__views.__alloyId205);
+    $.__views.__alloyId206 = Ti.UI.createLabel({
         left: 10,
         top: "5%",
         width: Ti.UI.SIZE,
@@ -60,32 +52,18 @@ function Controller() {
             fontSize: "18"
         },
         text: "WELCOME TO BOFFF ME!",
-<<<<<<< HEAD
-        id: "__alloyId202"
+        id: "__alloyId206"
     });
-    $.__views.__alloyId201.add($.__views.__alloyId202);
-    $.__views.__alloyId203 = Ti.UI.createImageView({
-=======
-        id: "__alloyId209"
-    });
-    $.__views.__alloyId208.add($.__views.__alloyId209);
-    $.__views.__alloyId210 = Ti.UI.createImageView({
->>>>>>> 5daa1a124110b51f9e8352b9a1f44b5650f0c8ac
+    $.__views.__alloyId205.add($.__views.__alloyId206);
+    $.__views.__alloyId207 = Ti.UI.createImageView({
         image: "/images/bofffme_logo_512x512.png",
         width: "200",
         height: "200",
         top: "25%",
-<<<<<<< HEAD
-        id: "__alloyId203"
+        id: "__alloyId207"
     });
-    $.__views.__alloyId201.add($.__views.__alloyId203);
-    $.__views.__alloyId204 = Ti.UI.createButton({
-=======
-        id: "__alloyId210"
-    });
-    $.__views.__alloyId208.add($.__views.__alloyId210);
-    $.__views.__alloyId211 = Ti.UI.createButton({
->>>>>>> 5daa1a124110b51f9e8352b9a1f44b5650f0c8ac
+    $.__views.__alloyId205.add($.__views.__alloyId207);
+    $.__views.__alloyId208 = Ti.UI.createButton({
         bottom: 0,
         font: {
             fontSize: "22",
@@ -96,26 +74,15 @@ function Controller() {
         backgroundColor: "transparent",
         color: "white",
         title: "Continue",
-<<<<<<< HEAD
-        id: "__alloyId204"
+        id: "__alloyId208"
     });
-    $.__views.__alloyId201.add($.__views.__alloyId204);
-    openPhoneNumberWin ? $.__views.__alloyId204.addEventListener("click", openPhoneNumberWin) : __defers["$.__views.__alloyId204!click!openPhoneNumberWin"] = true;
-=======
-        id: "__alloyId211"
-    });
-    $.__views.__alloyId208.add($.__views.__alloyId211);
-    openPhoneNumberWin ? $.__views.__alloyId211.addEventListener("click", openPhoneNumberWin) : __defers["$.__views.__alloyId211!click!openPhoneNumberWin"] = true;
->>>>>>> 5daa1a124110b51f9e8352b9a1f44b5650f0c8ac
+    $.__views.__alloyId205.add($.__views.__alloyId208);
+    openPhoneNumberWin ? $.__views.__alloyId208.addEventListener("click", openPhoneNumberWin) : __defers["$.__views.__alloyId208!click!openPhoneNumberWin"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.win.navBarHidden = true;
     $.win.open();
-<<<<<<< HEAD
-    __defers["$.__views.__alloyId204!click!openPhoneNumberWin"] && $.__views.__alloyId204.addEventListener("click", openPhoneNumberWin);
-=======
-    __defers["$.__views.__alloyId211!click!openPhoneNumberWin"] && $.__views.__alloyId211.addEventListener("click", openPhoneNumberWin);
->>>>>>> 5daa1a124110b51f9e8352b9a1f44b5650f0c8ac
+    __defers["$.__views.__alloyId208!click!openPhoneNumberWin"] && $.__views.__alloyId208.addEventListener("click", openPhoneNumberWin);
     _.extend($, exports);
 }
 

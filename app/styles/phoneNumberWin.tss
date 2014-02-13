@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////// Objects common styles
 "ScrollView": {
-	height: Ti.UI.SIZE,
-	top: "15%",
+	height: Ti.UI.FILL,
+	top: 40,
 },
 "Button": {
 	top: 20,
@@ -14,13 +14,12 @@
 },
 "Picker": {
 	 selectionIndicator: true,
-	 top: 1000,
 },
-// "Picker[platform=ios]": {
-// 	
-	// //bubbleParent: false,
-	// //visible: false,
-// },
+"Picker[platform=ios]": {
+	bottom: 0,
+	bubbleParent: false,
+	visible: false,
+},
 "TextField[platform=android]": {
 	softKeyboardOnFocus: Ti.UI.Android.SOFT_KEYBOARD_SHOW_ON_FOCUS,
 }
@@ -36,11 +35,11 @@
 	},
 	".entryFields": {
 		height: '42',
-		bottom: 5,
+		bottom: 10,
 		width: "80%",
-		//borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
 		keyboardType : Ti.UI.KEYBOARD_PHONE_PAD,
-		font: { fontSize: "15" },
+		font: { fontSize: "14.5" },
 		color: "black",
 		bubbleParent: false,
 	}

@@ -7,6 +7,7 @@ function Controller() {
         currentCountryCode = $.picker.getSelectedRow(0).id.toLowerCase();
     }
     function continueBtnPressed() {
+        "0" == $.txt_phoneNumber.value.charAt(0) && alert("fuck me");
         var phoneNumberRegex = /^[0-9]{9,15}$/;
         if ($.txt_phoneNumber.value.match(phoneNumberRegex)) {
             $.dialog_confirm.message = "Do do you confirm that this is your number: +" + allCountries[currentCountryCode].phoneCode + parseInt($.txt_phoneNumber.value, 10) + "\nAn SMS with your access code will be sent to this number.";

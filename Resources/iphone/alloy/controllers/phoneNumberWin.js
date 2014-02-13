@@ -1,7 +1,7 @@
 function Controller() {
     function openPicker() {
-        $.picker.top = 100;
-        animation.flash($.picker, 500, function() {});
+        false == $.picker.visible && ($.picker.visible = true);
+        animation.fadeIn($.picker, 500);
     }
     function changeCountryAndCountryCode() {
         $.lbl_country_ios.text = $.picker.getSelectedRow(0).title;
@@ -10,13 +10,13 @@ function Controller() {
     function continueBtnPressed() {
         var phoneNumberRegex = /^[0-9]{9,15}$/;
         if ($.txt_phoneNumber.value.match(phoneNumberRegex)) {
-            $.dialog_confirm.message = "Do do you confirm that this is your number: +" + allCountries[currentCountryCode].phoneCode + parseInt($.txt_phoneNumber.value, 10) + "\nAn SMS with your access code will be sent to this number.";
+            $.dialog_confirm.message = "Do do you confirm that this is your number: +" + allCountries[currentCountryCode].phoneCode + $.txt_phoneNumber.value + "\nAn SMS with your access code will be sent to this number.";
             $.dialog_confirm.show();
         } else alert("The number you entered is not valid");
     }
     function dialogConfirmPressed(e) {
         if (0 == e.index) $.txt_phoneNumber.focus(); else {
-            Alloy.Globals.globalUserSignUpData.phone = "+" + allCountries[currentCountryCode].phoneCode + parseInt($.txt_phoneNumber.value, 10);
+            Alloy.Globals.globalUserSignUpData.phone = allCountries[currentCountryCode].phoneCode + $.txt_phoneNumber.value;
             var smsWin = Alloy.createController("smsWin").getView();
             Alloy.Globals.mainNav.openWindow(smsWin);
         }
@@ -36,8 +36,8 @@ function Controller() {
     });
     $.__views.win && $.addTopLevelView($.__views.win);
     $.__views.__alloyId172 = Ti.UI.createScrollView({
-        height: Ti.UI.SIZE,
-        top: "15%",
+        height: Ti.UI.FILL,
+        top: 40,
         scrollingEnabled: "false",
         layout: "vertical",
         id: "__alloyId172"
@@ -51,21 +51,18 @@ function Controller() {
         font: {
             fontSize: "17"
         },
+        bubbleParent: false,
         text: "Keep your bofff friends in sync with your contact list by registering your phone number.",
         id: "__alloyId173"
     });
     $.__views.__alloyId172.add($.__views.__alloyId173);
     $.__views.lbl_country_ios = Ti.UI.createLabel({
-        height: "42",
-<<<<<<< HEAD
         bottom: 10,
-=======
-        bottom: 5,
->>>>>>> 5daa1a124110b51f9e8352b9a1f44b5650f0c8ac
         width: "80%",
+        borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         keyboardType: Ti.UI.KEYBOARD_PHONE_PAD,
         font: {
-            fontSize: "15"
+            fontSize: "14.5"
         },
         color: "black",
         bubbleParent: false,
@@ -74,16 +71,12 @@ function Controller() {
     $.__views.__alloyId172.add($.__views.lbl_country_ios);
     openPicker ? $.__views.lbl_country_ios.addEventListener("click", openPicker) : __defers["$.__views.lbl_country_ios!click!openPicker"] = true;
     $.__views.txt_phoneNumber = Ti.UI.createTextField({
-        height: "42",
-<<<<<<< HEAD
         bottom: 10,
-=======
-        bottom: 5,
->>>>>>> 5daa1a124110b51f9e8352b9a1f44b5650f0c8ac
         width: "80%",
+        borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         keyboardType: Ti.UI.KEYBOARD_PHONE_PAD,
         font: {
-            fontSize: "15"
+            fontSize: "14.5"
         },
         color: "black",
         bubbleParent: false,
@@ -109,7 +102,9 @@ function Controller() {
     continueBtnPressed ? $.__views.__alloyId174.addEventListener("click", continueBtnPressed) : __defers["$.__views.__alloyId174!click!continueBtnPressed"] = true;
     $.__views.picker = Ti.UI.createPicker({
         selectionIndicator: true,
-        top: 1e3,
+        bottom: 0,
+        bubbleParent: false,
+        visible: false,
         id: "picker"
     });
     $.__views.win.add($.__views.picker);
@@ -142,8 +137,11 @@ function Controller() {
     $.picker.setSelectedRow(0, selectedRow, true);
     $.lbl_country_ios.text = allCountries[currentCountryCode].name + " (+" + allCountries[currentCountryCode].phoneCode + ")";
     var animation = require("alloy/animation");
+    animation.fadeOut($.picker, 0);
     $.win.addEventListener("click", function() {
+        animation.fadeOut($.picker, 500);
         $.txt_phoneNumber.blur();
+        alert("I am executed!");
     });
     $.win.addEventListener("androidback", function() {
         $.win.close({

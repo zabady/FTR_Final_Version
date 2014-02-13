@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////////////// PICKER AND TEXTFIELDS
 // To get the current country, for testing we will use Locale
 // TODO: Get the location from the IP not from the location
-//var currentCountryCode = Alloy.Globals.location;
-var currentCountryCode = Titanium.Locale.getCurrentCountry();
+var currentCountryCode = Alloy.Globals.location;
+//var currentCountryCode = Titanium.Locale.getCurrentCountry();
 currentCountryCode = currentCountryCode.toLowerCase();
 
 // Inheriting all countries from from countries.js file in lib directory
@@ -35,18 +35,12 @@ if(OS_IOS) {
 // TODO: Handle that picker shit on iOS
 	// Requiring animation to animate the iOS picker view
 	var animation = require('alloy/animation');
-	//animation.fadeOut($.picker, 0);
-	//animation.popIn($.picker);
+	animation.fadeOut($.picker, 0);
 	
 	// Defining a function to open or close iOS picker
 	function openPicker() {
-		//if($.picker.visible == false) $.picker.visible = true;
-		//animation.fadeIn($.picker, 500);
-		//$.pickerView.height = Ti.UI.SIZE;
-		$.picker.top = 100;
-		animation.popIn($.picker, function(e){
-			alert("WTF");
-		});
+		if($.picker.visible == false) $.picker.visible = true;
+		animation.fadeIn($.picker, 500);
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////////////// END OF PICKER AND TEXTFIELDS
@@ -99,9 +93,9 @@ function dialogConfirmPressed(e){
 ////////////////////////////////////////////////////////////////////////////////////////// Window Event Listeners
 // Adding event listener on the window to blur the keyboard and close ios picker on click
 $.win.addEventListener('click', function(e){
-	//if(OS_IOS) animation.fadeOut($.picker, 500);
+	if(OS_IOS) animation.fadeOut($.picker, 500);
 	$.txt_phoneNumber.blur();
-	alert('I am executed!');
+	//alert('I am executed!');
 });
 
 // Overriding back button in android to close the window not the app
