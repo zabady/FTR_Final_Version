@@ -5,7 +5,7 @@
 	height: Ti.UI.SIZE,
 },
 "Label": {
-	font: {fontSize:"14dp"},
+	font: {fontSize:"14"},
 	color: "gray",
 	width: "60%",
 },
@@ -13,11 +13,11 @@
 	width: "75%",
 	keyboardType : Ti.UI.KEYBOARD_PHONE_PAD,
 	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-	returnKeyType: Ti.UI.RETURNKEY_DONE,
 	hintText: "Enter your code here",
 	bubbleParent: false,
-	//softKeyboardOnFocus: Ti.UI.Android.SOFT_KEYBOARD_DEFAULT_ON_FOCUS, // Android only to view keyboard onFocus
-	// TODO: Handle softKeyboardOnFocus for android 
+},
+"TextField[platform=android]": {
+	softKeyboardOnFocus: Ti.UI.Android.SOFT_KEYBOARD_SHOW_ON_FOCUS, // Android only to view keyboard onFocus
 }
 
 
@@ -32,14 +32,13 @@
 /////////////////////////////////////////////////////// Specific Styles
 	"#lbl_gotYourCode": {
 		color: "#2279bc", // Dark blue
-		font: {fontSize: "17dp"}
+		font: {fontSize: "17"}
 	},
 	"#btn_continue": {
 		borderRadius: 5,
-		font: {fontSize: "15dp", fontWeight: "bold"},
-		height: "40dp",
+		font: {fontSize: "15", fontWeight: "bold"},
+		height: "40",
 		width: "50%",
 		backgroundColor: "#D8D8D8", // Gray
 		color: "#C0C0C0", // Dark Gray
-		bubbleParent: false,
 	}

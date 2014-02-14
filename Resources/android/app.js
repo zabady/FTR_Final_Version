@@ -1,6 +1,6 @@
 var Alloy = require("alloy"), _ = Alloy._, Backbone = Alloy.Backbone;
 
-Alloy.Globals.WindowsBackgroundColor = "#CEECF5";
+Alloy.Globals.apiUrl = "http://www.bofffme.com/api/index.php/home/";
 
 Alloy.Globals.firstTimeRun = false;
 

@@ -72,7 +72,7 @@ function dialogConfirmPressed(e){
 		$.txt_phoneNumber.focus();
 	} else {
 		// Save the user's phone number in the global data variable
-		Alloy.Globals.globalUserSignUpData.phone = "+" + allCountries[currentCountryCode].phoneCode 
+		Alloy.Globals.globalUserSignUpData.phone = allCountries[currentCountryCode].phoneCode 
 			+ parseInt($.txt_phoneNumber.value, 10);
 		
 		// Navigate to SMS Code confirmation
@@ -81,7 +81,7 @@ function dialogConfirmPressed(e){
 			Alloy.Globals.mainNav.openWindow(smsWin);
 		}
 		else {
-			smsWin.open();
+			smsWin.open({ activityEnterAnimation: Ti.Android.R.anim.slide_in_left });
 		}
 	}
 }
@@ -98,7 +98,5 @@ $.win.addEventListener('click', function(e){
 
 // Overriding back button in android to close the window not the app
 $.win.addEventListener('androidback', function (e) {
-    $.win.close({
-    	activityExitAnimation: Ti.Android.R.anim.slide_out_right,
-    });
+    $.win.close({ activityExitAnimation: Ti.Android.R.anim.slide_out_right });
 });

@@ -7,7 +7,7 @@
 			<Label class="allStyles" id="lbl_gotYourCode">Got your code ?</Label>
 		
 <!-- TODO: Discussion Point: Should Done Button in android fires Contine Clicked ? -> NO -->
-			<TextField class="allStyles" id="txt_SMSCode" onChange="editingSMSCodeTxt"></TextField>
+			<TextField class="allStyles" id="txt_SMSCode" onChange="onChangeSMSCodeTxtField"></TextField>
 			
 			<Button class="allStyles" id="btn_continue" title="Continue" onClick="continueBtnPressed" enabled="false"></Button>
 			

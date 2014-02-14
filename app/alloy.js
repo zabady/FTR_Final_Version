@@ -15,9 +15,8 @@ if(OS_IOS) {
 	Alloy.Globals.mainNav = new Object();
 }
 
-// Defining a backgroud color for all windows
-Alloy.Globals.WindowsBackgroundColor = "#CEECF5";
-//Alloy.Globals.WindowsBackgroundColor = "white";
+// Defining the server's api url
+Alloy.Globals.apiUrl = 'http://www.bofffme.com/api/index.php/home/';
 
 // Defining a variable for detecting if it's FTR or not
 Alloy.Globals.firstTimeRun = false;
