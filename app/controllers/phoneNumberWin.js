@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////////////// PICKER AND TEXTFIELDS
 // To get the current country, for testing we will use Locale
 // TODO: Get the location from the IP not from the location
-var currentCountryCode = Alloy.Globals.location;
-//var currentCountryCode = Titanium.Locale.getCurrentCountry();
+//var currentCountryCode = Alloy.Globals.location;
+var currentCountryCode = Titanium.Locale.getCurrentCountry();
 currentCountryCode = currentCountryCode.toLowerCase();
 
 // Inheriting all countries from from countries.js file in lib directory
@@ -28,29 +28,27 @@ $.picker.setSelectedRow(0, selectedRow, true);
 
 // Handling picker events and text fields for both iOS and android
 if(OS_IOS) {
-
 	// Setting the text country's text fields for the first time
-	$.lbl_country_ios.text = allCountries[currentCountryCode].name + " (+" + allCountries[currentCountryCode].phoneCode + ")";
-		
-// TODO: Handle that picker shit on iOS
+	$.txt_country_ios.value = allCountries[currentCountryCode].name + " (+" + allCountries[currentCountryCode].phoneCode + ")";
+
 	// Requiring animation to animate the iOS picker view
 	var animation = require('alloy/animation');
-	//animation.fadeOut($.picker, 0);
+	animation.fadeOut($.picker, 0);
 	
 	// Defining a function to open or close iOS picker
-	function openPicker() {
-		//if($.picker.visible == false) $.picker.visible = true;
-		$.picker.top = 100;
-		animation.popIn($.picker, 500);
+	function openPicker(e) {
+		$.txt_country_ios.blur();
+		if($.picker.visible == false) $.picker.visible = true;
+		animation.fadeIn($.picker, 500);
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////////////// END OF PICKER AND TEXTFIELDS
 
 
-////////////////////////////////////////////////////////////////////////////////////////// FUNCTIONS FOR BOTH PLATFORMS
+////////////////////////////////////////////////////////////////////////////////////////// EVENT LISTENER FUNCTIONS
 // Defining a function that changes the country and country code text fields for both platforms
 function changeCountryAndCountryCode() {
-	if(OS_IOS) $.lbl_country_ios.text = $.picker.getSelectedRow(0).title;
+	if(OS_IOS) $.txt_country_ios.value = $.picker.getSelectedRow(0).title;
 	currentCountryCode = $.picker.getSelectedRow(0).id.toLowerCase();
 }
 
@@ -94,9 +92,8 @@ function dialogConfirmPressed(e){
 ////////////////////////////////////////////////////////////////////////////////////////// Window Event Listeners
 // Adding event listener on the window to blur the keyboard and close ios picker on click
 $.win.addEventListener('click', function(e){
-	//if(OS_IOS) animation.fadeOut($.picker, 500);
+	if(OS_IOS) animation.fadeOut($.picker, 500);
 	$.txt_phoneNumber.blur();
-	alert('I am executed!');
 });
 
 // Overriding back button in android to close the window not the app

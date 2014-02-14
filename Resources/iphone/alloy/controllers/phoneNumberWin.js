@@ -1,10 +1,11 @@
 function Controller() {
     function openPicker() {
+        $.txt_country_ios.blur();
         false == $.picker.visible && ($.picker.visible = true);
         animation.fadeIn($.picker, 500);
     }
     function changeCountryAndCountryCode() {
-        $.lbl_country_ios.text = $.picker.getSelectedRow(0).title;
+        $.txt_country_ios.value = $.picker.getSelectedRow(0).title;
         currentCountryCode = $.picker.getSelectedRow(0).id.toLowerCase();
     }
     function continueBtnPressed() {
@@ -35,54 +36,47 @@ function Controller() {
         title: "Bofff Me Setup"
     });
     $.__views.win && $.addTopLevelView($.__views.win);
-    $.__views.__alloyId172 = Ti.UI.createScrollView({
-        height: Ti.UI.FILL,
-        top: 40,
-        scrollingEnabled: "false",
+    $.__views.__alloyId172 = Ti.UI.createView({
         layout: "vertical",
         id: "__alloyId172"
     });
     $.__views.win.add($.__views.__alloyId172);
     $.__views.__alloyId173 = Ti.UI.createLabel({
-        bottom: 40,
-        width: "80%",
-        textAlign: "center",
+        top: "8%",
         color: "#2279bc",
+        textAlign: "center",
+        width: "75%",
         font: {
-            fontSize: "17"
+            fontSize: "15"
         },
-        text: "Keep your bofff friends in sync with your contact list by registering your phone number.",
+        text: "Type in your phone number",
         id: "__alloyId173"
     });
     $.__views.__alloyId172.add($.__views.__alloyId173);
-    $.__views.lbl_country_ios = Ti.UI.createLabel({
-        height: "42",
-        bottom: 10,
-        width: "80%",
+    $.__views.txt_country_ios = Ti.UI.createTextField({
+        top: "20",
+        width: "85%",
+        font: {
+            fontSize: "15"
+        },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         keyboardType: Ti.UI.KEYBOARD_PHONE_PAD,
-        font: {
-            fontSize: "14.5"
-        },
-        color: "black",
         bubbleParent: false,
-        id: "lbl_country_ios"
+        id: "txt_country_ios"
     });
-    $.__views.__alloyId172.add($.__views.lbl_country_ios);
-    openPicker ? $.__views.lbl_country_ios.addEventListener("click", openPicker) : __defers["$.__views.lbl_country_ios!click!openPicker"] = true;
+    $.__views.__alloyId172.add($.__views.txt_country_ios);
+    openPicker ? $.__views.txt_country_ios.addEventListener("focus", openPicker) : __defers["$.__views.txt_country_ios!focus!openPicker"] = true;
     $.__views.txt_phoneNumber = Ti.UI.createTextField({
-        height: "42",
-        bottom: 10,
-        width: "80%",
+        top: "5",
+        width: "85%",
+        font: {
+            fontSize: "15"
+        },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         keyboardType: Ti.UI.KEYBOARD_PHONE_PAD,
-        font: {
-            fontSize: "14.5"
-        },
-        color: "black",
         bubbleParent: false,
         id: "txt_phoneNumber",
-        hintText: "Phone Number"
+        hintText: "Phone Number without country code"
     });
     $.__views.__alloyId172.add($.__views.txt_phoneNumber);
     $.__views.__alloyId174 = Ti.UI.createButton({
@@ -91,7 +85,7 @@ function Controller() {
         backgroundColor: "#2279bc",
         borderRadius: 5,
         font: {
-            fontSize: "16",
+            fontSize: "15",
             fontWeight: "bold"
         },
         height: "40",
@@ -101,8 +95,22 @@ function Controller() {
     });
     $.__views.__alloyId172.add($.__views.__alloyId174);
     continueBtnPressed ? $.__views.__alloyId174.addEventListener("click", continueBtnPressed) : __defers["$.__views.__alloyId174!click!continueBtnPressed"] = true;
+    $.__views.__alloyId175 = Ti.UI.createLabel({
+        top: "8%",
+        color: "gray",
+        textAlign: "center",
+        width: "75%",
+        font: {
+            fontSize: "15"
+        },
+        text: "Keep your bofff friends in sync with your contact list by registering your phone number.",
+        id: "__alloyId175"
+    });
+    $.__views.__alloyId172.add($.__views.__alloyId175);
     $.__views.picker = Ti.UI.createPicker({
         selectionIndicator: true,
+        width: "80%",
+        height: "42",
         bottom: 0,
         bubbleParent: false,
         visible: false,
@@ -110,18 +118,18 @@ function Controller() {
     });
     $.__views.win.add($.__views.picker);
     changeCountryAndCountryCode ? $.__views.picker.addEventListener("change", changeCountryAndCountryCode) : __defers["$.__views.picker!change!changeCountryAndCountryCode"] = true;
-    var __alloyId176 = [];
-    __alloyId176.push("Edit");
-    __alloyId176.push("Confirm");
+    var __alloyId177 = [];
+    __alloyId177.push("Edit");
+    __alloyId177.push("Confirm");
     $.__views.dialog_confirm = Ti.UI.createAlertDialog({
-        buttonNames: __alloyId176,
+        buttonNames: __alloyId177,
         id: "dialog_confirm",
         title: "Confirm your number"
     });
     dialogConfirmPressed ? $.__views.dialog_confirm.addEventListener("click", dialogConfirmPressed) : __defers["$.__views.dialog_confirm!click!dialogConfirmPressed"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var currentCountryCode = Alloy.Globals.location;
+    var currentCountryCode = Titanium.Locale.getCurrentCountry();
     currentCountryCode = currentCountryCode.toLowerCase();
     var allCountries = require("countries");
     var selectedRow, pickerRows = [], counter = 0;
@@ -136,7 +144,7 @@ function Controller() {
     }
     $.picker.add(pickerRows);
     $.picker.setSelectedRow(0, selectedRow, true);
-    $.lbl_country_ios.text = allCountries[currentCountryCode].name + " (+" + allCountries[currentCountryCode].phoneCode + ")";
+    $.txt_country_ios.value = allCountries[currentCountryCode].name + " (+" + allCountries[currentCountryCode].phoneCode + ")";
     var animation = require("alloy/animation");
     animation.fadeOut($.picker, 0);
     $.win.addEventListener("click", function() {
@@ -148,7 +156,7 @@ function Controller() {
             activityExitAnimation: Ti.Android.R.anim.slide_out_right
         });
     });
-    __defers["$.__views.lbl_country_ios!click!openPicker"] && $.__views.lbl_country_ios.addEventListener("click", openPicker);
+    __defers["$.__views.txt_country_ios!focus!openPicker"] && $.__views.txt_country_ios.addEventListener("focus", openPicker);
     __defers["$.__views.picker!change!changeCountryAndCountryCode"] && $.__views.picker.addEventListener("change", changeCountryAndCountryCode);
     __defers["$.__views.__alloyId174!click!continueBtnPressed"] && $.__views.__alloyId174.addEventListener("click", continueBtnPressed);
     __defers["$.__views.picker!change!changeCountryAndCountryCode"] && $.__views.picker.addEventListener("change", changeCountryAndCountryCode);

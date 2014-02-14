@@ -1,26 +1,24 @@
 <Alloy>
 	<Window id="win" title="Bofff Me Setup">
 		
-		<ScrollView scrollingEnabled="false" layout="vertical">
+		<View layout="vertical">
 		
-			<Label class="descriptionText">
-				Keep your bofff friends in sync with your contact list by registering your phone number.
-			</Label>
+			<Label>Type in your phone number</Label>
 			
-			<Label platform="ios" id="lbl_country_ios" class="entryFields" onClick="openPicker" />
-			<Picker platform="android" id="picker" class="entryFields" onChange="changeCountryAndCountryCode" />
+			<TextField top="20" platform="ios" id="txt_country_ios" class="entryFields" onFocus="openPicker" />
+			<Picker top="20" platform="android" id="picker" onChange="changeCountryAndCountryCode" />
 			
-			<!--<Require platform="android" id="picker" src="picker" type="view" top=10></Require>-->
-			
-			<TextField class="entryFields" id="txt_phoneNumber" hintText="Phone Number" />
+			<TextField class="entryFields" id="txt_phoneNumber" hintText="Phone Number without country code" />
 		
 			<Button onClick="continueBtnPressed">Continue</Button>
 			
-		</ScrollView>
+			<Label color="gray">
+				Keep your bofff friends in sync with your contact list by registering your phone number.
+			</Label>
+			
+		</View>
 		
 		<Picker platform="ios" id="picker" onChange="changeCountryAndCountryCode" />
-		<!--<Require platform="ios" id="picker" src="picker" type="view" top=10></Require>-->
-		
 		
 		<AlertDialog id="dialog_confirm" onClick="dialogConfirmPressed" title="Confirm your number">
             <ButtonNames>

@@ -1,46 +1,41 @@
 /////////////////////////////////////////////////////// Objects common styles
-"ScrollView": {
-	height: Ti.UI.FILL,
-	top: 40,
+"Label": {
+	top: "8%",
+	color: "#2279bc",
+	textAlign: "center",
+	width: "75%",
+	font: { fontSize: "15" },
 },
+"TextField": {
+	top: "5",
+	width: "85%",
+	font: { fontSize: "15" },
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+	keyboardType : Ti.UI.KEYBOARD_PHONE_PAD,
+	bubbleParent: false,
+},
+"TextField[platform=android]": {
+	width: "80%",
+	height: "42",
+	color: "white",
+	softKeyboardOnFocus: Ti.UI.Android.SOFT_KEYBOARD_SHOW_ON_FOCUS,
+}
 "Button": {
 	top: 20,
 	color: "white",
 	backgroundColor: "#2279bc",
 	borderRadius: 5,
-	font: { fontSize: "16", fontWeight: "bold" },
+	font: {fontSize: "15", fontWeight: "bold"},
 	height: "40",
 	width: "50%"
 },
 "Picker": {
 	 selectionIndicator: true,
-	 top: 1000,
+	 width: "80%",
+	 height: "42",
 },
-// "Picker[platform=ios]": {
-	// bottom: 0,
-	// bubbleParent: false,
-	// visible: false,
-//},
-"TextField[platform=android]": {
-	softKeyboardOnFocus: Ti.UI.Android.SOFT_KEYBOARD_SHOW_ON_FOCUS,
+"Picker[platform=ios]": {
+	bottom: 0,
+	bubbleParent: false,
+	visible: false,
 }
-
-
-/////////////////////////////////////////////////////// Class Styles
-	".descriptionText": {
-		bottom: 40,
-		width: '80%',
-		textAlign: 'center',
-		color: '#2279bc',
-		font: { fontSize: "17" },
-	},
-	".entryFields": {
-		height: '42',
-		bottom: 10,
-		width: "80%",
-		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-		keyboardType : Ti.UI.KEYBOARD_PHONE_PAD,
-		font: { fontSize: "14.5" },
-		color: "black",
-		bubbleParent: false,
-	}

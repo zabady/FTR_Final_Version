@@ -107,14 +107,14 @@ function Controller() {
         title: "Enter Your Details"
     });
     $.__views.win && $.addTopLevelView($.__views.win);
-    $.__views.__alloyId192 = Ti.UI.createScrollView({
+    $.__views.__alloyId193 = Ti.UI.createScrollView({
         height: Ti.UI.SIZE,
         top: "10dp",
         layout: "vertical",
         scrollingEnabled: "false",
-        id: "__alloyId192"
+        id: "__alloyId193"
     });
-    $.__views.win.add($.__views.__alloyId192);
+    $.__views.win.add($.__views.__alloyId193);
     $.__views.btn_facebook = Ti.UI.createButton({
         top: "20dp",
         borderRadius: 5,
@@ -131,9 +131,9 @@ function Controller() {
         backgroundImage: "/images/import_facebook_400x80.png",
         id: "btn_facebook"
     });
-    $.__views.__alloyId192.add($.__views.btn_facebook);
+    $.__views.__alloyId193.add($.__views.btn_facebook);
     facebookBtnPressed ? $.__views.btn_facebook.addEventListener("click", facebookBtnPressed) : __defers["$.__views.btn_facebook!click!facebookBtnPressed"] = true;
-    $.__views.__alloyId194 = Ti.UI.createLabel({
+    $.__views.__alloyId195 = Ti.UI.createLabel({
         font: {
             fontSize: "17dp"
         },
@@ -144,9 +144,9 @@ function Controller() {
         textAlign: "center",
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         text: "OR",
-        id: "__alloyId194"
+        id: "__alloyId195"
     });
-    $.__views.__alloyId192.add($.__views.__alloyId194);
+    $.__views.__alloyId193.add($.__views.__alloyId195);
     $.__views.img_user = Ti.UI.createImageView({
         top: "12dp",
         height: "100dp",
@@ -154,7 +154,7 @@ function Controller() {
         image: "/images/contact_photo.png",
         id: "img_user"
     });
-    $.__views.__alloyId192.add($.__views.img_user);
+    $.__views.__alloyId193.add($.__views.img_user);
     imgPressed ? $.__views.img_user.addEventListener("click", imgPressed) : __defers["$.__views.img_user!click!imgPressed"] = true;
     $.__views.txt_name = Ti.UI.createTextField({
         bubbleParent: false,
@@ -167,7 +167,7 @@ function Controller() {
         returnKeyType: Ti.UI.RETURNKEY_NEXT,
         id: "txt_name"
     });
-    $.__views.__alloyId192.add($.__views.txt_name);
+    $.__views.__alloyId193.add($.__views.txt_name);
     txtNameReturnKeyPressed ? $.__views.txt_name.addEventListener("return", txtNameReturnKeyPressed) : __defers["$.__views.txt_name!return!txtNameReturnKeyPressed"] = true;
     $.__views.txt_email = Ti.UI.createTextField({
         bubbleParent: false,
@@ -181,7 +181,7 @@ function Controller() {
         returnKeyType: Ti.UI.RETURNKEY_GO,
         id: "txt_email"
     });
-    $.__views.__alloyId192.add($.__views.txt_email);
+    $.__views.__alloyId193.add($.__views.txt_email);
     continueBtnPressed ? $.__views.txt_email.addEventListener("return", continueBtnPressed) : __defers["$.__views.txt_email!return!continueBtnPressed"] = true;
     $.__views.lbl_whyMyEmail = Ti.UI.createLabel({
         font: {
@@ -193,9 +193,9 @@ function Controller() {
         id: "lbl_whyMyEmail",
         url: "http://yahoo.com"
     });
-    $.__views.__alloyId192.add($.__views.lbl_whyMyEmail);
+    $.__views.__alloyId193.add($.__views.lbl_whyMyEmail);
     openWebView ? $.__views.lbl_whyMyEmail.addEventListener("click", openWebView) : __defers["$.__views.lbl_whyMyEmail!click!openWebView"] = true;
-    $.__views.__alloyId195 = Ti.UI.createButton({
+    $.__views.__alloyId196 = Ti.UI.createButton({
         top: "10dp",
         borderRadius: 5,
         font: {
@@ -208,16 +208,16 @@ function Controller() {
         color: "white",
         bubbleParent: false,
         title: "Continue",
-        id: "__alloyId195"
+        id: "__alloyId196"
     });
-    $.__views.__alloyId192.add($.__views.__alloyId195);
-    continueBtnPressed ? $.__views.__alloyId195.addEventListener("click", continueBtnPressed) : __defers["$.__views.__alloyId195!click!continueBtnPressed"] = true;
-    var __alloyId197 = [];
-    __alloyId197.push("Open Camera");
-    __alloyId197.push("Choose from Library");
-    __alloyId197.push("Cancel");
+    $.__views.__alloyId193.add($.__views.__alloyId196);
+    continueBtnPressed ? $.__views.__alloyId196.addEventListener("click", continueBtnPressed) : __defers["$.__views.__alloyId196!click!continueBtnPressed"] = true;
+    var __alloyId198 = [];
+    __alloyId198.push("Open Camera");
+    __alloyId198.push("Choose from Library");
+    __alloyId198.push("Cancel");
     $.__views.optionDialog = Ti.UI.createOptionDialog({
-        options: __alloyId197,
+        options: __alloyId198,
         id: "optionDialog",
         cancel: "2"
     });
@@ -242,7 +242,7 @@ function Controller() {
     __defers["$.__views.txt_name!return!txtNameReturnKeyPressed"] && $.__views.txt_name.addEventListener("return", txtNameReturnKeyPressed);
     __defers["$.__views.txt_email!return!continueBtnPressed"] && $.__views.txt_email.addEventListener("return", continueBtnPressed);
     __defers["$.__views.lbl_whyMyEmail!click!openWebView"] && $.__views.lbl_whyMyEmail.addEventListener("click", openWebView);
-    __defers["$.__views.__alloyId195!click!continueBtnPressed"] && $.__views.__alloyId195.addEventListener("click", continueBtnPressed);
+    __defers["$.__views.__alloyId196!click!continueBtnPressed"] && $.__views.__alloyId196.addEventListener("click", continueBtnPressed);
     __defers["$.__views.optionDialog!click!optionDialogClick"] && $.__views.optionDialog.addEventListener("click", optionDialogClick);
     _.extend($, exports);
 }
