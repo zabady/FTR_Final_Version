@@ -5,8 +5,8 @@
 
 function openPhoneNumberWin(e) 
 {
-	var phoneNumberWin = Alloy.createController("phoneNumberWin").getView();
-	//var phoneNumberWin = Alloy.createController("editProfileWin1").getView(); // For testing
+	//var phoneNumberWin = Alloy.createController("phoneNumberWin").getView();
+	var phoneNumberWin = Alloy.createController("userMainDetailsWin").getView(); // For testing
  	if(OS_IOS) {
 		Alloy.Globals.mainNav.openWindow(phoneNumberWin);
 	} else {

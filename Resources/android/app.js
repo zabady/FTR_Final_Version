@@ -5,10 +5,11 @@ Alloy.Globals.apiUrl = "http://www.bofffme.com/api/index.php/home/";
 Alloy.Globals.firstTimeRun = false;
 
 Alloy.Globals.globalUserSignUpData = new Object({
-    name: "temp",
+    name: "Ahmed Atif",
     phone: "+201009091995",
-    email: "temp",
-    profilePicture: new Object()
+    email: "ahmed.atif15@gamil.com",
+    profilePicture: new Object(),
+    gender: "temp"
 });
 
 Titanium.Geolocation.getCurrentPosition(function(e) {

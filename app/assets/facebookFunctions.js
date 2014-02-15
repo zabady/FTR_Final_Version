@@ -42,6 +42,7 @@ function requestWithGraphPath(nextFunctionData) {
 function getNameEmailPicture(objectsToChange) {
 	Alloy.Globals.globalUserSignUpData.name = facebookData.name;
 	Alloy.Globals.globalUserSignUpData.email = facebookData.email;
+	Alloy.Globals.globalUserSignUpData.gender = facebookData.gender;
 	
 	getAndSaveFbProfilePic("https://graph.facebook.com/" + facebookData.id + "/picture?height=100&redirect=false", "display");
 	getAndSaveFbProfilePic("https://graph.facebook.com/" + facebookData.id + "/picture?type=square&redirect=false", "icon");
