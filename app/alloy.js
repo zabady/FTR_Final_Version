@@ -23,15 +23,13 @@ Alloy.Globals.firstTimeRun = false;
 
 // Defining an associative array to save users data
 Alloy.Globals.globalUserSignUpData = new Object({
-	//name: 'temp',
-	name: 'Ahmed Atif', // for testing
+	name: 'temp',
+	//name: 'Ahmed Atif', // for testing
 	//phone: 'temp',
 	phone: '+201009091995',	// for testing
-	//email: 'temp',
-	email: 'ahmed.atif15@gamil.com', // for testing
+	email: 'temp',
+	//email: 'ahmed.atif15@gamil.com', // for testing
 	profilePicture: new Object(),
-	gender: "temp",
-	//gender: "male",
 });
 
 //////////////////////////////////////////////////////////////////////// ZeeZ's code for getting location

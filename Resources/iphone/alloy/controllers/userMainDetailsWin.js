@@ -1,31 +1,4 @@
 function Controller() {
-    function genderFunction(e) {
-        if ("img_gender_male" == e.source.id) {
-            $.lbl_gender_male.font = {
-                fontSize: "20"
-            };
-            $.lbl_gender_female.font = {
-                fontSize: "17"
-            };
-            $.lbl_gender_male.color = "#2279bc";
-            $.lbl_gender_female.color = "gray";
-            $.img_gender_male.image = "/images/gender_male.png";
-            $.img_gender_female.image = "/images/gender_female[shaded].png";
-            Alloy.Globals.globalUserSignUpData.gender = "male";
-        } else {
-            $.lbl_gender_male.font = {
-                fontSize: "17"
-            };
-            $.lbl_gender_female.font = {
-                fontSize: "20"
-            };
-            $.img_gender_male.image = "/images/gender_male[shaded].png";
-            $.img_gender_female.image = "/images/gender_female.png";
-            $.lbl_gender_male.color = "gray";
-            $.lbl_gender_female.color = "#2279bc";
-            Alloy.Globals.globalUserSignUpData.gender = "female";
-        }
-    }
     function validate_name() {
         var regexp = /^[a-zA-Z]+(\s{1}[a-zA-Z]+)*$/;
         if ($.txt_name.value.match(regexp) && $.txt_name.value.length > 2) {
@@ -46,17 +19,9 @@ function Controller() {
         $.txt_email.focus();
         return false;
     }
-    function checkGender() {
-        if ("temp" == Alloy.Globals.globalUserSignUpData.gender) {
-            alert("Please Select Gender");
-            return false;
-        }
-        return true;
-    }
     function facebookFinished() {
         $.txt_name.value = Alloy.Globals.globalUserSignUpData.name;
         $.txt_email.value = Alloy.Globals.globalUserSignUpData.email;
-        Alloy.Globals.globalUserSignUpData.gender ? $.img_gender_male.fireEvent("click") : $.img_gender_female.fireEvent("click");
         $.img_user.visible = false;
         $.img_user.image = Alloy.Globals.globalUserSignUpData.profilePicture.display.read();
         $.img_user.width = Ti.UI.SIZE;
@@ -65,7 +30,7 @@ function Controller() {
             $.img_user.visible = true;
         }, 500);
     }
-    function facebookImgPressed() {
+    function facebookBtnPressed() {
         Ti.include("/facebookFunctions.js");
         loginWithFacebook(requestWithGraphPath, getNameEmailPicture);
     }
@@ -117,8 +82,12 @@ function Controller() {
     function txtNameReturnKeyPressed() {
         $.txt_email.focus();
     }
+    function openWebView(e) {
+        var webview = Alloy.createController("webview", e.source.url).getView();
+        Alloy.Globals.mainNav.openWindow(webview);
+    }
     function continueBtnPressed() {
-        if (validate_name() && validate_email() && checkGender()) {
+        if (validate_name() && validate_email()) {
             $.win.fireEvent("click");
             var editProfileWin = Alloy.createController("editProfileWin1").getView();
             Alloy.Globals.mainNav.openWindow(editProfileWin);
@@ -142,20 +111,28 @@ function Controller() {
         height: Ti.UI.SIZE,
         top: "10dp",
         layout: "vertical",
-        scrollingEnabled: "true",
+        scrollingEnabled: "false",
         id: "__alloyId193"
     });
     $.__views.win.add($.__views.__alloyId193);
-    $.__views.img_facebook = Ti.UI.createImageView({
-        top: "10dp",
-        bottom: "12dp",
+    $.__views.btn_facebook = Ti.UI.createButton({
+        top: "20dp",
+        borderRadius: 5,
+        font: {
+            fontSize: "15dp",
+            fontWeight: "bold"
+        },
         height: "40dp",
         width: "200dp",
-        image: "/images/facebook_btn.png",
-        id: "img_facebook"
+        backgroundColor: "#2279bc",
+        color: "white",
+        bubbleParent: false,
+        bottom: "12dp",
+        backgroundImage: "/images/import_facebook_400x80.png",
+        id: "btn_facebook"
     });
-    $.__views.__alloyId193.add($.__views.img_facebook);
-    facebookImgPressed ? $.__views.img_facebook.addEventListener("click", facebookImgPressed) : __defers["$.__views.img_facebook!click!facebookImgPressed"] = true;
+    $.__views.__alloyId193.add($.__views.btn_facebook);
+    facebookBtnPressed ? $.__views.btn_facebook.addEventListener("click", facebookBtnPressed) : __defers["$.__views.btn_facebook!click!facebookBtnPressed"] = true;
     $.__views.__alloyId195 = Ti.UI.createLabel({
         font: {
             fontSize: "17dp"
@@ -201,60 +178,28 @@ function Controller() {
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         hintText: "Your email",
         keyboardType: Ti.UI.KEYBOARD_EMAIL,
-        returnKeyType: Ti.UI.RETURNKEY_DONE,
+        returnKeyType: Ti.UI.RETURNKEY_GO,
         id: "txt_email"
     });
     $.__views.__alloyId193.add($.__views.txt_email);
-    $.__views.__alloyId196 = Ti.UI.createView({
-        layout: "horizontal",
-        height: Ti.UI.SIZE,
-        width: Ti.UI.SIZE,
-        id: "__alloyId196"
-    });
-    $.__views.__alloyId193.add($.__views.__alloyId196);
-    $.__views.lbl_gender_male = Ti.UI.createLabel({
+    continueBtnPressed ? $.__views.txt_email.addEventListener("return", continueBtnPressed) : __defers["$.__views.txt_email!return!continueBtnPressed"] = true;
+    $.__views.lbl_whyMyEmail = Ti.UI.createLabel({
         font: {
-            fontSize: "17dp"
+            fontSize: "14dp"
         },
-        color: "gray",
-        width: "75",
-        text: "Male",
-        id: "lbl_gender_male",
-        textAlign: "right"
+        color: "#2279bc",
+        bottom: "10dp",
+        text: "Why my email ?",
+        id: "lbl_whyMyEmail",
+        url: "http://yahoo.com"
     });
-    $.__views.__alloyId196.add($.__views.lbl_gender_male);
-    $.__views.img_gender_male = Ti.UI.createImageView({
-        image: "/images/gender_male[shaded].png",
-        width: "75",
-        height: "75",
-        id: "img_gender_male"
-    });
-    $.__views.__alloyId196.add($.__views.img_gender_male);
-    genderFunction ? $.__views.img_gender_male.addEventListener("click", genderFunction) : __defers["$.__views.img_gender_male!click!genderFunction"] = true;
-    $.__views.img_gender_female = Ti.UI.createImageView({
-        image: "/images/gender_female[shaded].png",
-        width: "75",
-        height: "75",
-        id: "img_gender_female"
-    });
-    $.__views.__alloyId196.add($.__views.img_gender_female);
-    genderFunction ? $.__views.img_gender_female.addEventListener("click", genderFunction) : __defers["$.__views.img_gender_female!click!genderFunction"] = true;
-    $.__views.lbl_gender_female = Ti.UI.createLabel({
-        font: {
-            fontSize: "17dp"
-        },
-        color: "gray",
-        width: "75",
-        text: "Female",
-        id: "lbl_gender_female",
-        textAlign: "left"
-    });
-    $.__views.__alloyId196.add($.__views.lbl_gender_female);
-    $.__views.__alloyId197 = Ti.UI.createButton({
+    $.__views.__alloyId193.add($.__views.lbl_whyMyEmail);
+    openWebView ? $.__views.lbl_whyMyEmail.addEventListener("click", openWebView) : __defers["$.__views.lbl_whyMyEmail!click!openWebView"] = true;
+    $.__views.__alloyId196 = Ti.UI.createButton({
         top: "10dp",
         borderRadius: 5,
         font: {
-            fontSize: "16dp",
+            fontSize: "15dp",
             fontWeight: "bold"
         },
         height: "40dp",
@@ -263,16 +208,16 @@ function Controller() {
         color: "white",
         bubbleParent: false,
         title: "Continue",
-        id: "__alloyId197"
+        id: "__alloyId196"
     });
-    $.__views.__alloyId193.add($.__views.__alloyId197);
-    continueBtnPressed ? $.__views.__alloyId197.addEventListener("click", continueBtnPressed) : __defers["$.__views.__alloyId197!click!continueBtnPressed"] = true;
-    var __alloyId199 = [];
-    __alloyId199.push("Open Camera");
-    __alloyId199.push("Choose from Library");
-    __alloyId199.push("Cancel");
+    $.__views.__alloyId193.add($.__views.__alloyId196);
+    continueBtnPressed ? $.__views.__alloyId196.addEventListener("click", continueBtnPressed) : __defers["$.__views.__alloyId196!click!continueBtnPressed"] = true;
+    var __alloyId198 = [];
+    __alloyId198.push("Open Camera");
+    __alloyId198.push("Choose from Library");
+    __alloyId198.push("Cancel");
     $.__views.optionDialog = Ti.UI.createOptionDialog({
-        options: __alloyId199,
+        options: __alloyId198,
         id: "optionDialog",
         cancel: "2"
     });
@@ -292,12 +237,12 @@ function Controller() {
             activityExitAnimation: Ti.Android.R.anim.slide_out_right
         });
     });
-    __defers["$.__views.img_facebook!click!facebookImgPressed"] && $.__views.img_facebook.addEventListener("click", facebookImgPressed);
+    __defers["$.__views.btn_facebook!click!facebookBtnPressed"] && $.__views.btn_facebook.addEventListener("click", facebookBtnPressed);
     __defers["$.__views.img_user!click!imgPressed"] && $.__views.img_user.addEventListener("click", imgPressed);
     __defers["$.__views.txt_name!return!txtNameReturnKeyPressed"] && $.__views.txt_name.addEventListener("return", txtNameReturnKeyPressed);
-    __defers["$.__views.img_gender_male!click!genderFunction"] && $.__views.img_gender_male.addEventListener("click", genderFunction);
-    __defers["$.__views.img_gender_female!click!genderFunction"] && $.__views.img_gender_female.addEventListener("click", genderFunction);
-    __defers["$.__views.__alloyId197!click!continueBtnPressed"] && $.__views.__alloyId197.addEventListener("click", continueBtnPressed);
+    __defers["$.__views.txt_email!return!continueBtnPressed"] && $.__views.txt_email.addEventListener("return", continueBtnPressed);
+    __defers["$.__views.lbl_whyMyEmail!click!openWebView"] && $.__views.lbl_whyMyEmail.addEventListener("click", openWebView);
+    __defers["$.__views.__alloyId196!click!continueBtnPressed"] && $.__views.__alloyId196.addEventListener("click", continueBtnPressed);
     __defers["$.__views.optionDialog!click!optionDialogClick"] && $.__views.optionDialog.addEventListener("click", optionDialogClick);
     _.extend($, exports);
 }

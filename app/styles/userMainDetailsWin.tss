@@ -1,17 +1,17 @@
 /////////////////////////////////////////////////////// Objects common styles
 "ScrollView": {
 	height: Ti.UI.SIZE,
-	top: "10dp",
+	top: "10dp"
 },
 "Button": {
 	top: "10dp",
 	borderRadius: 5,
-	font: {fontSize: "16dp", fontWeight: "bold"},
+	font: {fontSize: "15dp", fontWeight: "bold"},
 	height: "40dp",
 	width: "55%",
 	backgroundColor: "#2279bc", // Dark Blue
 	color: "white",
-	bubbleParent: false,
+	bubbleParent: false
 },
 "Label": {
 	font: {fontSize: "17dp"},
@@ -22,7 +22,6 @@
 }
 "TextField[platform=android]": {
 	softKeyboardOnFocus: Ti.UI.Android.SOFT_KEYBOARD_DEFAULT_ON_FOCUS, // Android only to view keyboard onFocus
-	color: "white",
 }
 
 
@@ -33,26 +32,22 @@
 		height: Ti.UI.SIZE,
 		textAlign: "center",
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, // For text fields
-	},
-	".genderLabelsStyle": {
-		width: "75",
-		color: "gray",
 	}
 
 
 /////////////////////////////////////////////////////// Specific Styles
-	"#img_facebook": {
-		top: "10dp",
+	"#btn_facebook": {
+		top: "20dp",
 		bottom: "12dp",
 		height: "40dp",
 		width: "200dp",
-		image: "/images/facebook_btn.png",
+		backgroundImage: "/images/import_facebook_400x80.png",
 	},
 	"#img_user": {
 		top: "12dp",
 		height :"100dp",
-		width: "100dp",
-	    image: "/images/contact_photo.png",
+		width : "100dp",
+	    image :  "/images/contact_photo.png",
 	},
 	"#txt_name": {
 		hintText: "Your Name",
@@ -61,8 +56,9 @@
 	"#txt_email": {
 		hintText: "Your email",
 		keyboardType: Ti.UI.KEYBOARD_EMAIL,
-		returnKeyType: Ti.UI.RETURNKEY_DONE,
+		returnKeyType: Ti.UI.RETURNKEY_GO,
 	},
+<<<<<<< HEAD
 	"#img_gender_male": {
 		image: "/images/gender_male[shaded].png",
 		width: "75",
@@ -79,3 +75,9 @@
 		height: '90',
 		image : '/images/camera.png'
 	}
+=======
+	"#lbl_whyMyEmail": {
+		font: { fontSize: "14dp" },
+		bottom: "10dp",
+	}
+>>>>>>> parent of a775ab3... Main Details Window (Import from facebook)

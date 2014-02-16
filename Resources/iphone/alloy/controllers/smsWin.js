@@ -1,5 +1,5 @@
 function Controller() {
-    function onChangeSMSCodeTxtField(e) {
+    function editingSMSCodeTxt(e) {
         if (4 == e.source.value.length) {
             $.btn_continue.enabled = true;
             $.btn_continue.backgroundColor = "#2279bc";
@@ -11,7 +11,8 @@ function Controller() {
         }
     }
     function continueBtnPressed() {
-        if ($.btn_continue.enabled) if ($.txt_SMSCode.value == accessCode) {
+        if ($.btn_continue.enabled) if ("4444" == $.txt_SMSCode.value) {
+            $.win.fireEvent("click");
             var userMainDetailsWin = Alloy.createController("userMainDetailsWin").getView();
             Alloy.Globals.mainNav.openWindow(userMainDetailsWin);
         } else {
@@ -43,7 +44,7 @@ function Controller() {
     $.__views.win.add($.__views.__alloyId190);
     $.__views.lbl_gotYourCode = Ti.UI.createLabel({
         font: {
-            fontSize: "17"
+            fontSize: "17dp"
         },
         color: "#2279bc",
         width: "60%",
@@ -58,6 +59,7 @@ function Controller() {
         width: "75%",
         keyboardType: Ti.UI.KEYBOARD_PHONE_PAD,
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+        returnKeyType: Ti.UI.RETURNKEY_DONE,
         hintText: "Enter your code here",
         bubbleParent: false,
         top: "8%",
@@ -66,19 +68,20 @@ function Controller() {
         id: "txt_SMSCode"
     });
     $.__views.__alloyId190.add($.__views.txt_SMSCode);
-    onChangeSMSCodeTxtField ? $.__views.txt_SMSCode.addEventListener("change", onChangeSMSCodeTxtField) : __defers["$.__views.txt_SMSCode!change!onChangeSMSCodeTxtField"] = true;
+    editingSMSCodeTxt ? $.__views.txt_SMSCode.addEventListener("change", editingSMSCodeTxt) : __defers["$.__views.txt_SMSCode!change!editingSMSCodeTxt"] = true;
     $.__views.btn_continue = Ti.UI.createButton({
         top: "8%",
-        height: "40",
+        height: "40dp",
         textAlign: "center",
         borderRadius: 5,
         font: {
-            fontSize: "15",
+            fontSize: "15dp",
             fontWeight: "bold"
         },
         width: "50%",
         backgroundColor: "#D8D8D8",
         color: "#C0C0C0",
+        bubbleParent: false,
         id: "btn_continue",
         title: "Continue",
         enabled: "false"
@@ -87,7 +90,7 @@ function Controller() {
     continueBtnPressed ? $.__views.btn_continue.addEventListener("click", continueBtnPressed) : __defers["$.__views.btn_continue!click!continueBtnPressed"] = true;
     $.__views.__alloyId191 = Ti.UI.createLabel({
         font: {
-            fontSize: "14"
+            fontSize: "14dp"
         },
         color: "gray",
         width: "60%",
@@ -100,7 +103,7 @@ function Controller() {
     $.__views.__alloyId190.add($.__views.__alloyId191);
     $.__views.__alloyId192 = Ti.UI.createLabel({
         font: {
-            fontSize: "14"
+            fontSize: "14dp"
         },
         color: "gray",
         width: "60%",
@@ -113,35 +116,23 @@ function Controller() {
     $.__views.__alloyId190.add($.__views.__alloyId192);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var accessCode = "0000";
-    var xhr = Ti.Network.createHTTPClient({
-        onload: function() {
-            var response = JSON.parse(this.responseText);
-            alert(response.rows);
-            accessCode = response.rows;
-        },
-        onerror: function() {
-            Ti.UI.createAlertDialog({
-                title: "Error",
-                message: "Check your internet connection.",
-                cancel: 0,
-                buttonNames: [ "Ok" ]
-            }).show();
-        }
+    var btn_done = Titanium.UI.createButton({
+        systemButton: Ti.UI.iPhone.SystemButton.DONE
     });
-    xhr.open("POST", Alloy.Globals.apiUrl + "send_code_msg");
-    ({
-        mobile: Alloy.Globals.globalUserSignUpData.phone
+    btn_done.addEventListener("click", function() {
+        $.win.fireEvent("click");
     });
+    var flexSpace = Titanium.UI.createButton({
+        systemButton: Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE
+    });
+    $.txt_SMSCode.keyboardToolbar = [ flexSpace, btn_done ];
     $.win.addEventListener("click", function() {
         $.txt_SMSCode.blur();
     });
     $.win.addEventListener("androidback", function() {
-        $.win.close({
-            activityExitAnimation: Ti.Android.R.anim.slide_out_right
-        });
+        $.win.close();
     });
-    __defers["$.__views.txt_SMSCode!change!onChangeSMSCodeTxtField"] && $.__views.txt_SMSCode.addEventListener("change", onChangeSMSCodeTxtField);
+    __defers["$.__views.txt_SMSCode!change!editingSMSCodeTxt"] && $.__views.txt_SMSCode.addEventListener("change", editingSMSCodeTxt);
     __defers["$.__views.btn_continue!click!continueBtnPressed"] && $.__views.btn_continue.addEventListener("click", continueBtnPressed);
     _.extend($, exports);
 }

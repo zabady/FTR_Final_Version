@@ -2,16 +2,15 @@ var Alloy = require("alloy"), _ = Alloy._, Backbone = Alloy.Backbone;
 
 Alloy.Globals.mainNav = new Object();
 
-Alloy.Globals.apiUrl = "http://www.bofffme.com/api/index.php/home/";
+Alloy.Globals.WindowsBackgroundColor = "#CEECF5";
 
 Alloy.Globals.firstTimeRun = false;
 
 Alloy.Globals.globalUserSignUpData = new Object({
-    name: "Ahmed Atif",
+    name: "temp",
     phone: "+201009091995",
-    email: "ahmed.atif15@gamil.com",
-    profilePicture: new Object(),
-    gender: "temp"
+    email: "temp",
+    profilePicture: new Object()
 });
 
 Titanium.Geolocation.getCurrentPosition(function(e) {

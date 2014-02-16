@@ -2,6 +2,8 @@
 // TODO: Discussion about how many pictures for one user should we save ?
 // TODO: Handling image rotation
 // TODO: Discussion point, should the app goes to edit your profile in a navigation window ? NO
+// TODO: Name validation don't accept spaces while it should !!
+// TODO: Handle the case of no photo and no facebook
 // TODO: Handle Loading
 // TODO: Handle coming back from camera, it loads the app from the begining
 
@@ -36,35 +38,33 @@ function validate_email()
 	}
 }
 
-// Check if a gender is selected or not
-function checkGender()
-{
-	if(Alloy.Globals.globalUserSignUpData.gender == "temp") {
-		alert("Please Select Gender");
-		return false;
-	} else return true;
-}
-
 // Defining a function to be executed when facebook finish
 function facebookFinished() {
-	// Set user name, email, gender and photo
 	$.txt_name.value = Alloy.Globals.globalUserSignUpData.name;
 	$.txt_email.value = Alloy.Globals.globalUserSignUpData.email;
-	Alloy.Globals.globalUserSignUpData.gender ? $.img_gender_male.fireEvent('click') : $.img_gender_female.fireEvent('click');
+	// Hide the image until the width is handled
+	$.img_user.visible = false;
 	$.img_user.image = Alloy.Globals.globalUserSignUpData.profilePicture.display.read();
 	$.img_user.width = Ti.UI.SIZE;
+	
+	// This is the best handling for converting from px to dps until now for android
+	// The image width on android is set after some time for some reason, so waiting for a second is a good solution
+	setTimeout(function() {
+		$.img_user.width = $.img_user.rect.width + "dp";
+		$.img_user.visible = true;
+	}, 500);
 }
 
-// Adding facebookFinished function to be global function to get fired by facebook.js
+// Adding that function to an event listener
 Ti.App.addEventListener('facebookFinished', facebookFinished);
 
 // Removing facebookFinished event listener when the window is closed to save memory
 $.win.addEventListener('close', function(){
 	Ti.App.removeEventListener('facebookFinished', facebookFinished);
 });
-/////////////////////////////////////////////////////////////////////////// END OF LOGIC FUNCTIONS
 
 
+<<<<<<< HEAD
 /////////////////////////////////////////////////////////////////////////// HANDLING UI AND EVENT LISTENERS
 // Android Workarounds: Remove keyboard autofocus and for the camera layout
 if(OS_ANDROID) {
@@ -83,7 +83,10 @@ if(OS_ANDROID) {
 		Ti.Media.takePicture();
 	}
 }
+=======
+>>>>>>> parent of a775ab3... Main Details Window (Import from facebook)
 
+/////////////////////////////////////////////////////////////////////////// HANDLING UI AND EVENT LISTENERS
 // Adding a click event listener for the window to blur the keyboard
 $.win.addEventListener('click', function(){
 	$.txt_name.blur();
@@ -91,12 +94,13 @@ $.win.addEventListener('click', function(){
 });
 
 // Defining a function for pressing on Import from facebook
-function facebookImgPressed() {
+function facebookBtnPressed() {
 	
 	// Including FacebookFunctions.js to call loginWithFacebook
 	Ti.include("/facebookFunctions.js");
 	// Send login with facebook the two functions that will be executed after login
 	loginWithFacebook(requestWithGraphPath, getNameEmailPicture);
+	
 }
 
 // Defining a function for pressing on the image
@@ -285,45 +289,35 @@ function txtNameReturnKeyPressed() {
 	$.txt_email.focus();
 }
 
-// Defining a function for gender selection
-function genderSelected(e) {
-	if(e.source.id == "img_gender_male") {
-		$.lbl_gender_male.font = { fontSize: "20" };
-		$.lbl_gender_female.font = { fontSize: "17" };;
-		$.lbl_gender_male.color = "#2279bc";
-		$.lbl_gender_female.color = "gray";
-		$.img_gender_male.image = "/images/gender_male.png";
-		$.img_gender_female.image = "/images/gender_female[shaded].png";
-		Alloy.Globals.globalUserSignUpData.gender = "male";
+// Defining a function for pressing on Why My Email Label to open the webView
+function openWebView(e) {
+	var webview = Alloy.createController('webview', e.source.url).getView();
+	if(OS_IOS) {
+		Alloy.Globals.mainNav.openWindow(webview);
 	} else {
-		$.lbl_gender_male.font = { fontSize: "17" };
-		$.lbl_gender_female.font = { fontSize: "20" };;
-		$.img_gender_male.image = "/images/gender_male[shaded].png";
-		$.img_gender_female.image = "/images/gender_female.png";
-		$.lbl_gender_male.color = "gray";
-		$.lbl_gender_female.color = "#2279bc";
-		Alloy.Globals.globalUserSignUpData.gender = "female";
+		webview.open();
 	}
 }
 
 // Defining a function for pressing on Continue button
 function continueBtnPressed() {
 	
-	if(validate_name() && validate_email() && checkGender()) {
-		
-		$.win.fireEvent('click');	// To blur keyboard
+	if(validate_name() && validate_email()) {
+		$.win.fireEvent('click'); // To blur keyboards, we must do it manually for android
 		
 		// Go to the next window, complete your profile
 		var editProfileWin = Alloy.createController("editProfileWin1").getView();
 	 	if(OS_IOS) {
 			Alloy.Globals.mainNav.openWindow(editProfileWin);
 		} else {
-			editProfileWin.open({ activityEnterAnimation: Ti.Android.R.anim.slide_in_left });
+			editProfileWin.open();
 		}
 	}
 }
 
 // Overriding back button in android to close the window not the app
 $.win.addEventListener('androidback', function (e) {
-    $.win.close({ activityExitAnimation: Ti.Android.R.anim.slide_out_right });
+    $.win.close({
+    	activityExitAnimation: Ti.Android.R.anim.slide_out_right,
+    });
 });
