@@ -66,7 +66,7 @@ $.win.addEventListener('close', function(){
 
 
 /////////////////////////////////////////////////////////////////////////// HANDLING UI AND EVENT LISTENERS
-// A workaround to remove autofocus keyboard on android
+// Android Workarounds: Remove keyboard autofocus and for the camera layout
 if(OS_ANDROID) {
 	var firstTime = true;
 	$.txt_name.addEventListener('focus', function(e) {
@@ -75,6 +75,13 @@ if(OS_ANDROID) {
 			firstTime = false;
 		}
 	});
+	
+	// Defining a function for capturing a photo for android layout
+	var photoOrientation;
+	function capturePhotoPressed() {
+		photoOrientation = $.win.orientation;
+		Ti.Media.takePicture();
+	}
 }
 
 // Adding a click event listener for the window to blur the keyboard
@@ -103,12 +110,113 @@ function optionDialogClick(e)
 	// index "0" equals camera selection as a source
 	if (e.index == 0) 
 	{
+		// if (osname == "android") {
+			// $.win.orientationModes = [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT, Titanium.UI.UPSIDE_PORTRAIT];
+// 
+			// Ti.Media.showCamera({
+				// success : function(event) {
+					// $.win.orientationModes = [Titanium.UI.PORTRAIT];
+					// var image_cam = event.media;
+// 
+					// // check if image is captured in portrait mode
+					// if (photoOrientation == 1) {
+						// alert("portrait");
+						// // check if image is forced to landscape (e.g : samsung)
+						// var image_flipped = event.media.width > event.media.height;
+						// if (image_flipped) {
+							// var rotation = Ti.UI.create2DMatrix({
+								// rotate : -270
+							// });
+// 
+							// $.img_user.image = image_cam;
+							// $.img_user.transform = rotation;
+// 
+						// } else {
+							// $.img_user.image = image_cam;
+						// }
+// 
+					// } else {
+						// alert("Landscape");
+						// $.img_user.image = image_cam;
+					// }
+				// },
+				// cancel : function() {
+					// alert("You have cancelled !");
+// 
+				// },
+				// error : function(error) {
+					// // create alert
+					// var alert_dialog = Ti.UI.createAlertDialog({
+						// title : 'Camera',
+						// buttonNames : ['Ok']
+					// });
+// 
+					// // set message
+					// if (error.code == Ti.Media.NO_CAMERA) {
+						// alert_dialog.setMessage('Please run this test on device');
+					// } else {
+						// alert_dialog.setMessage('Unexpected error: ' + error.code);
+					// }
+// 
+					// alert_dialog.show();
+				// },
+// 
+				// saveToPhotoGallery : false,
+				// allowEditing : true,
+				// mediaTypes : [Ti.Media.MEDIA_TYPE_PHOTO],
+				// showControls : false,
+// 
+				// overlay : $.view_camera_android // That's the point
+			// });
+// 
+		// } else {
+			// alert("iphone");
+			// Ti.Media.showCamera({
+// 
+				// success : function(event) {
+// 
+					// var image_cam = event.media;
+// 
+					// $.img_usr.image = image_cam;
+				// },
+				// cancel : function() {
+					// alert("You have cancelled !");
+// 
+				// },
+				// error : function(error) {
+					// // create alert
+					// var alert_dialog = Ti.UI.createAlertDialog({
+						// title : 'Camera',
+						// buttonNames : ['Ok']
+					// });
+// 
+					// // set message
+					// if (error.code == Ti.Media.NO_CAMERA) {
+						// alert_dialog.setMessage('Please run this test on device');
+					// } else {
+						// alert_dialog.setMessage('Unexpected error: ' + error.code);
+					// }
+// 
+					// alert_dialog.show();
+				// },
+// 
+				// saveToPhotoGallery : false,
+				// allowEditing : true,
+				// mediaTypes : [Ti.Media.MEDIA_TYPE_PHOTO]
+// 
+			// });
+		// }
+
+		
+		
+		
+		
 		Ti.Media.showCamera({
 			success : function(event) {
 				var cropRect = event.cropRect;
 				var image_cam = event.media;
 				Ti.API.debug('Our type was: ' + event.mediaType);
-				if (event.mediaType == Ti.Media.MEDIA_TYPE_PHOTO) {
+				if (event.mediaType == Ti.Media.MEDIA_TYPE_PHOTO) {	// No use for this if statement
 // TODO: Allow rotation once more
 					//var rotation = Ti.UI.create2DMatrix({ rotate : -270 });  
 					$.img_user.image = image_cam;
@@ -138,9 +246,11 @@ function optionDialogClick(e)
 				}
 				alert_dialog.show();
 			},
-			saveToPhotoGallery : true,
-			allowEditing : true,
-			mediaTypes : [Ti.Media.MEDIA_TYPE_PHOTO]
+			saveToPhotoGallery: false,
+			allowEditing: true,
+			mediaTypes: [Ti.Media.MEDIA_TYPE_PHOTO],
+			//showControls: 'false',			// For Android
+			//overlay: $.view_camera_android,	// For Android
 		});
 	}
 	

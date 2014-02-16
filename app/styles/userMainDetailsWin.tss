@@ -72,4 +72,10 @@
 		image: "/images/gender_female[shaded].png",
 		width: "75",
 		height: "75",
+	},
+	"#img_camera_android[platform=android]": {
+		bottom: '10',
+		width: '90',
+		height: '90',
+		image : '/images/camera.png'
 	}

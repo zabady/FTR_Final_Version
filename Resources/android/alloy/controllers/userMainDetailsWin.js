@@ -62,7 +62,7 @@ function Controller() {
                 error.code == Ti.Media.NO_CAMERA ? alert_dialog.setMessage("Please run this test on device") : alert_dialog.setMessage("Unexpected error: " + error.code);
                 alert_dialog.show();
             },
-            saveToPhotoGallery: true,
+            saveToPhotoGallery: false,
             allowEditing: true,
             mediaTypes: [ Ti.Media.MEDIA_TYPE_PHOTO ]
         }) : 1 == e.index && Ti.Media.openPhotoGallery({
@@ -139,7 +139,7 @@ function Controller() {
         height: Ti.UI.SIZE,
         top: "10dp",
         layout: "vertical",
-        scrollingEnabled: "true",
+        scrollingEnabled: "false",
         id: "__alloyId193"
     });
     $.__views.win.add($.__views.__alloyId193);
@@ -292,6 +292,18 @@ function Controller() {
         cancel: "2"
     });
     optionDialogClick ? $.__views.optionDialog.addEventListener("click", optionDialogClick) : __defers["$.__views.optionDialog!click!optionDialogClick"] = true;
+    $.__views.view_camera_android = Ti.UI.createView({
+        id: "view_camera_android"
+    });
+    $.__views.view_camera_android && $.addTopLevelView($.__views.view_camera_android);
+    $.__views.img_camera_android = Ti.UI.createImageView({
+        bottom: "10",
+        width: "90",
+        height: "90",
+        image: "/images/camera.png",
+        id: "img_camera_android"
+    });
+    $.__views.view_camera_android.add($.__views.img_camera_android);
     exports.destroy = function() {};
     _.extend($, $.__views);
     Ti.App.addEventListener("facebookFinished", facebookFinished);

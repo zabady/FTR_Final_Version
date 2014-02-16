@@ -1,8 +1,6 @@
 <Alloy>
-	<Window class="container" id="win" title="Enter Your Details">
+	<Window id="win" title="Enter Your Details">
 		
-<!-- TODO: The scrollView has problems in screen rotation because of using dp pixels instead of screen % -->
-<!-- TODO: Disscussion Point: Will we support Screen Rotation ? -->
 		<ScrollView layout="vertical" scrollingEnabled="false" >
 			
 			<Label class="allStyles" platform="android">Enter Your Details</Label>
@@ -37,4 +35,9 @@
 		</OptionDialog>
 		
 	</Window>
+	
+	<!-- Android layout view that is shown over the camera as a workaround -->
+	<View id="view_camera_android" platform="android">
+		<ImageView id="img_camera_android" />
+	</View>
 </Alloy>

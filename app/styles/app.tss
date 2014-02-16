@@ -1,6 +1,3 @@
 "Window": {
 	backgroundColor: "white",
-	//backgroundColor: "#CEECF5",
-	//backgroundColor: "#ade3f8",
-	//backgroundImage: "/images/background_640x1136.jpg",
 }
